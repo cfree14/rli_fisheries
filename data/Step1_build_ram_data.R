@@ -202,6 +202,8 @@ stocks <- stock_key %>%
 # Export data
 save(stocks, data, file=file.path(datadir, "ram4.41_for_analysis.Rdata"))
 
+table(stocks$ffmsy_source)
+table(stocks$biomass_units)
 
 
 
