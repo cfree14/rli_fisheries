@@ -73,7 +73,7 @@ stock_key <- stock %>%
 ################################################################################
 
 # Build data
-data <- timeseries_values_views %>% 
+ts_data <- timeseries_values_views %>% 
   # Get values
   select(stockid, stocklong, year, TB, SSB, TN, FdivFmsy, ERdivERmsy) %>% 
   rename(tb=TB, ssb=SSB, tn=TN, ffmsy=FdivFmsy, uumsy=ERdivERmsy) %>% 
@@ -98,25 +98,25 @@ data <- timeseries_values_views %>%
 ##################################################################
 
 # All biomass estimates come from assessments  
-table(data$ssb_source)
-table(data$tb_source)
-table(data$tn_source)
+table(ts_data$ssb_source)
+table(ts_data$tb_source)
+table(ts_data$tn_source)
 
 # Units
-table(data$ssb_units)
-table(data$tb_units)
-table(data$tn_units)
+table(ts_data$ssb_units)
+table(ts_data$tb_units)
+table(ts_data$tn_units)
 
 # Some MSY reference points come from production model fits
-table(data$ffmsy_source)
-table(data$uumsy_source)
+table(ts_data$ffmsy_source)
+table(ts_data$uumsy_source)
 
 
 # Time series stats
 ##################################################################
 
 # Time series stats
-ts_stats <- data %>% 
+ts_stats <- ts_data %>% 
   group_by(stockid) %>% 
   summarize(ssb_nyr=sum(!is.na(ssb)),
             ssb_units=unique(ssb_units),
@@ -128,9 +128,6 @@ ts_stats <- data %>%
             ffmsy_source=unique(ffmsy_source),
             uumsy_nyr=sum(!is.na(uumsy)),
             uumsy_source=unique(uumsy_source))
-
-plot(ffmsy_nyr ~ uumsy_nyr, ts_stats)
-
 
 # Data selection process:
 # 1. No salmon
@@ -156,13 +153,59 @@ ts_use <- ts_stats %>%
   # 2. Remove stocks with insufficient biomass info
   filter(ssb_nyr >= nyr_b_req | tb_nyr >= nyr_b_req | tn_nyr >= nyr_b_req) %>% 
   # 3. Identify which biomass time series to use
-  mutate(b_use=ifelse(ssb_nyr>=0.95*tb_nyr, "SSB", 
-                      ifelse(tb_nyr>=0.95*tn_nyr, "TB", "TN"))) %>% 
+  mutate(b_use=ifelse(ssb_nyr>=0.95*tb_nyr & ssb_nyr>=0.95*tn_nyr, "SSB", 
+                      ifelse(tb_nyr>=0.95*tn_nyr, "TB", "TN")),
+         b_units=ifelse(b_use=="SSB", ssb_units,
+                        ifelse(b_use=="TB", tb_units, tn_units))) %>% 
   # 4. Identify which F/FMSY time series to use
   mutate(ffmsy_use=ifelse(ffmsy_nyr==0 & uumsy_nyr==0, "none",
                           ifelse(ffmsy_nyr>=0.95*uumsy_nyr, "F/FMSY", "U/UMSY")))
 
+
 table(ts_use$b_use)
+
+# Build final dataset
+################################################################################
+
+# Build final dataset
+data <- ts_data %>% 
+  # Only stocks in dataset 
+  ungroup() %>% 
+  filter(stockid %in% ts_use$stockid) %>% 
+  # Figure out which BIOMASS and F/FMSY to use
+  left_join(select(ts_use, stockid, b_use, ffmsy_use), by="stockid") %>% 
+  mutate(biomass=ifelse(b_use=="SSB", ssb, 
+                        ifelse(b_use=="TB", tb, tn)), 
+         biomass_units=ifelse(b_use=="SSB", ssb_units, 
+                              ifelse(b_use=="TB", tb_units, tn_units)),
+         f=ifelse(ffmsy_use=="none", NA,
+                  ifelse(ffmsy_use=="F/FMSY", ffmsy, uumsy)),
+         f_source=ifelse(ffmsy_use=="none", "none",
+                         ifelse(ffmsy_use=="F/FMSY", ffmsy_source, uumsy_source))) %>% 
+  # Reduce and rename columns
+  select(stockid, year, biomass, b_use, biomass_units,  f, ffmsy_use, f_source) %>% 
+  rename(biomass_type=b_use, ffmsy=f, ffmsy_type=ffmsy_use, ffmsy_source=f_source) %>% 
+  # Remove empty biomasses
+  filter(!is.na(biomass))
+ 
+# Recalculate summary statistics to add to stock key
+stats <- data %>%
+  group_by(stockid, biomass_type, biomass_units, ffmsy_type, ffmsy_source) %>% 
+  summarize(biomass_nyr=sum(!is.na(biomass)),
+            ffmsy_nyr=sum(!is.na(ffmsy)))
+ 
+# Stocks
+stocks <- stock_key %>% 
+  filter(stockid %in% ts_use$stockid) %>% 
+  left_join(stats, by="stockid")
+
+# Export data
+save(stocks, data, file=file.path(datadir, "ram4.41_for_analysis.Rdata"))
+
+
+
+
+
 
 
 
