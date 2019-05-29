@@ -1,19 +1,20 @@
+#### NP VERSION ####
 
 # Clear workspace
 rm(list = ls())
-
 # Setup
 ################################################################################
 
 # Packages
 library(tidyverse)
+library(freeR)
 
 # Directories
-datadir <- "data/ramldb"
+# datadir <- "data/ramldb"
 
 # Read RAM Legacy Database
-load("/Users/cfree/Dropbox/Prelim Database Files/Versions/RAM v4.41 (8-20-18)/DB Files With Model Fit Data/DBdata (model fits included).RData")
-
+# load("/Users/cfree/Dropbox/Prelim Database Files/Versions/RAM v4.41 (8-20-18)/DB Files With Model Fit Data/DBdata (model fits included).RData")
+load("./Prelim Database Files/Versions/RAM v4.41 (8-20-18)/DB Files With Model Fit Data/DBdata (model fits included).RData")
 
 # Build stock key
 ################################################################################
@@ -187,7 +188,7 @@ data <- ts_data %>%
   rename(biomass_type=b_use, ffmsy=f, ffmsy_type=ffmsy_use, ffmsy_source=f_source) %>% 
   # Remove empty biomasses
   filter(!is.na(biomass))
- 
+
 # Recalculate summary statistics to add to stock key
 stats <- data %>%
   group_by(stockid, biomass_type, biomass_units, ffmsy_type, ffmsy_source) %>% 
@@ -199,8 +200,15 @@ stocks <- stock_key %>%
   filter(stockid %in% ts_use$stockid) %>% 
   left_join(stats, by="stockid")
 
+#Add species and common name
+data$species <- stocks[match(data$stockid, stocks$stockid),'species']
+data$comm_name <- stocks[match(data$stockid, stocks$stockid),'comm_name']
+
+
+
 # Export data
-save(stocks, data, file=file.path(datadir, "ram4.41_for_analysis.Rdata"))
+# save(stocks, data, file=file.path(datadir, "ram4.41_for_analysis.Rdata"))
+save(stocks, data, file=file.path("ram4.41_for_analysis.Rdata"))
 
 table(stocks$ffmsy_source)
 table(stocks$biomass_units)
