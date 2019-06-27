@@ -76,17 +76,19 @@ stock_key <- stock %>%
 # Build data
 ts_data <- timeseries_values_views %>% 
   # Get values
-  select(stockid, stocklong, year, TB, SSB, TN, FdivFmsy, ERdivERmsy) %>% 
-  rename(tb=TB, ssb=SSB, tn=TN, ffmsy=FdivFmsy, uumsy=ERdivERmsy) %>% 
+  select(stockid, stocklong, year, TC, TL, TB, SSB, TN, FdivFmsy, ERdivERmsy) %>% 
+  rename(tc=TC, tl=TL, tb=TB, ssb=SSB, tn=TN, ffmsy=FdivFmsy, uumsy=ERdivERmsy) %>% 
   # Add units
-  left_join(select(timeseries_units_views, stockid, TB, SSB, TN), by="stockid") %>% 
-  rename(tb_units=TB, ssb_units=SSB, tn_units=TN) %>% 
+  left_join(select(timeseries_units_views, stockid, TC, TL, TB, SSB, TN), by="stockid") %>% 
+  rename(tc_units=TC, tl_units=TL, tb_units=TB, ssb_units=SSB, tn_units=TN) %>% 
   # Add sources
   left_join(select(timeseries_sources_views, stockid, TB, SSB, TN, FdivFmsy, ERdivERmsy), by="stockid") %>% 
   rename(tb_source=TB, ssb_source=SSB, tn_source=TN, ffmsy_source=FdivFmsy, uumsy_source=ERdivERmsy) %>% 
   # Rearrange columns
   select(stockid, stocklong, year, 
          ssb, ssb_units, ssb_source,
+         tc, tc_units,
+         tl, tl_units,
          tb, tb_units, tb_source,
          tn, tn_units, tn_source,
          ffmsy, ffmsy_source,
@@ -184,7 +186,7 @@ data <- ts_data %>%
          f_source=ifelse(ffmsy_use=="none", "none",
                          ifelse(ffmsy_use=="F/FMSY", ffmsy_source, uumsy_source))) %>% 
   # Reduce and rename columns
-  select(stockid, year, biomass, b_use, biomass_units,  f, ffmsy_use, f_source) %>% 
+  select(stockid, year, biomass, b_use, biomass_units,  f, ffmsy_use, f_source, tc, tc_units, tl, tl_units) %>% 
   rename(biomass_type=b_use, ffmsy=f, ffmsy_type=ffmsy_use, ffmsy_source=f_source) %>% 
   # Remove empty biomasses
   filter(!is.na(biomass))
@@ -214,8 +216,24 @@ table(stocks$ffmsy_source)
 table(stocks$biomass_units)
 
 
+# What propotion of total catch?
+################################################################################
 
+c_stats <- data %>% 
+  select(stockid, year, tc, tl, tc_units, tl_units) %>% 
+  mutate(catch_mt=ifelse(!is.na(tc) & tc_units=="MT", tc, 
+                         ifelse(!is.na(tl) & tl_units=="MT", tl, NA)),
+         catch_type=ifelse(!is.na(tc) & tc_units=="MT", "TC", 
+                         ifelse(!is.na(tl) & tl_units=="MT", "TL", "none"))) %>% 
+  group_by(year) %>% 
+  summarize(catch_mmt=sum(catch_mt, na.rm=T)/1e6,
+            nstocks=sum(catch_type!="none"),
+            pstocs=nstocks/nrow(stocks))
 
+  # mutate(catch_mt=ifelse((tc>=tl | (!is.na(tc) & is.na(tl))) & tc_units=="MT", tc, 
+  #                        ifelse((tl>=tc | (!is.na(tl) & is.na(tc))) & tl_units=="MT", tl, NA)),
+  #        catch_type=ifelse((tc>=tl | (!is.na(tc) & is.na(tl))) & tc_units=="MT", "TC", 
+  #                          ifelse((tl>=tc | (!is.na(tl) & is.na(tc))) & tl_units=="MT", "TL", "none")))
 
 
 

@@ -1,0 +1,349 @@
+"kingdom","phylum","class","order","family","genus","species","comm_name","g_yr"
+"Animalia","Arthropoda","Malacostraca","Decapoda","Menippidae","Pseudocarcinus","Pseudocarcinus gigas","Tasmanian giant crab",NA
+"Animalia","Mollusca","Gastropoda","Archaeogastropoda","Haliotidae","Haliotis","Haliotis iris","Blackfoot abalone",NA
+"Animalia","Mollusca","Gastropoda","Archaeogastropoda","Haliotidae","Haliotis","Haliotis spp","Paua",NA
+"Animalia","Mollusca","Gastropoda","Archaeogastropoda","Haliotidae","Haliotis","Haliotis midae","South African abalone",NA
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Sprattus","Sprattus fuegensis","Southern sardine",3.67117677664174
+"Animalia","Arthropoda","Malacostraca","Decapoda","Munididae","Pleuroncodes","Pleuroncodes monodon","Red squat lobster",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Munididae","Cervimunida","Cervimunida johni","Blue squat lobster",NA
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Zearaja","Zearaja chilensis","Yellownose skate",19.6485496106863
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Sardinella","Sardinella spp","Sardinella",3.04285581677553
+"Animalia","Chordata","Actinopterygii","Perciformes","Sciaenidae","Pseudotolithus","Pseudotolithus spp","Croaker",5.59778171138734
+"Animalia","Chordata","Actinopterygii","Perciformes","Haemulidae","Pomadasys","Pomadasys spp","Grey grunt",4.17087698813935
+"Animalia","Chordata","Actinopterygii","Siluriformes","Ariidae","Arius","Arius spp","Catfish",7.21753041999884
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Cynoglossidae","Cynoglossus","Cynoglossus spp","Sole",5.24643983684711
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Dentex","Dentex spp","Seabream",8.53566615728638
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Penaeus","Penaeus spp","Coastal shrimp",NA
+"Animalia","Mollusca","Cephalopoda","Sepiida","Sepiidae","Sepia","Sepia spp","Cuttlefish",NA
+"Animalia","Mollusca","Bivalvia","Ostreida","Ostreidae","Ostrea","Ostrea chilensis","Dredge oyster",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Oregoniidae","Chionoecetes","Chionoecetes japonicus","Beni-zuwai crab",NA
+"Animalia","Arthropoda","Malacostraca","Stomatopoda","Squillidae","Oratosquilla","Oratosquilla oratoria","Shako",NA
+"Animalia","Mollusca","Gastropoda","Neogastropoda","Buccinidae","Buccinum","Buccinum undatum","Waved whelk",NA
+"Animalia","Mollusca","Bivalvia","Pectinida","Pectinidae","Placopecten","Placopecten magellanicus","Sea scallop",NA
+"Animalia","Mollusca","Bivalvia","Pectinida","Pectinidae","Patinopecten","Patinopecten caurinus","Weathervane scallop",NA
+"Animalia","Mollusca","Bivalvia","Veneroida","Mactridae","Spisula","Spisula solidissima","Atlantic surfclam",NA
+"Animalia","Mollusca","Bivalvia","Veneroida","Mactridae","Mactromeris","Mactromeris polynyma","Arctic surfclam",NA
+"Animalia","Mollusca","Bivalvia","Venerida","Arcticidae","Arctica","Arctica islandica","Ocean quahog",NA
+"Animalia","Mollusca","Bivalvia","Myida","Myidae","Mya","Mya arenaria","Softshell clam ",NA
+"Animalia","Mollusca","Bivalvia","Adapedonta","Hiatellidae","Panopea","Panopea generosa","Pacific Geoduck",NA
+"Animalia","Mollusca","Cephalopoda","Myopsida","Loliginidae","Loligo","Doryteuthis pealeii","Longfin inshore squid",NA
+"Animalia","Mollusca","Cephalopoda","Oegopsida","Ommastrephidae","Illex","Illex illecebrosus","Northern shortfin squid",NA
+"Animalia","Mollusca","Cephalopoda","Octopoda","Octopodidae","Octopus","Octopus vulgaris","Octopus",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Penaeus","Penaeus esculentus","Brown tiger shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Penaeus","Penaeus semisulcatus","Grooved tiger prawn",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Parapenaeus","Parapenaeus longirostris","Deep-water rose shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Aristeidae","Aristaeomorpha","Aristaeomorpha foliacea","Giant red shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Aristeidae","Aristeus","Aristeus antennatus","Red shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Pandalidae","Pandalus","Pandalus borealis","Northern shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Pandalidae","Pandalus","Pandalus montagui","Aesop shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Pandalidae","Pandalopsis","Pandalopsis dispar","Sidestripe shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Pandalidae","Heterocarpus","Heterocarpus reedi","Nylon shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Nephropidae","Homarus","Homarus americanus","American lobster",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Nephropidae","Nephrops","Nephrops norvegicus","Norway lobster",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Lithodidae","Paralithodes","Paralithodes camtschaticus","Red king crab",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Lithodidae","Paralithodes","Paralithodes platypus","Blue king crab",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Oregoniidae","Chionoecetes","Chionoecetes opilio","Snow crab",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Oregoniidae","Chionoecetes","Chionoecetes bairdi","Tanner crab",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Cancridae","Cancer","Cancer irroratus","Rock crab",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Portunidae","Callinectes","Callinectes sapidus","Blue Crab",NA
+"Animalia","Arthropoda","Malacostraca","Stomatopoda","Squillidae","Squilla","Squilla mantis","Spottail mantis shrimp",NA
+"Animalia","Echinodermata","Echinoidea","Camarodonta","Strongylocentrotidae","Strongylocentrotus","Strongylocentrotus droebachiensis","Green sea urchin",NA
+"Animalia","Chordata","Elasmobranchii","Lamniformes","Lamnidae","Lamna","Lamna nasus","Porbeagle shark",20.4200158448286
+"Animalia","Chordata","Elasmobranchii","Lamniformes","Lamnidae","Isurus","Isurus oxyrinchus","Shortfin mako",18.1227438931488
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Carcharhinidae","Rhizoprionodon","Rhizoprionodon terraenovae","Atlantic sharpnose shark",5.20016431075127
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Triakidae","Mustelus","Mustelus canis","Smooth dogfish",12.5616029753089
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Carcharhinidae","Carcharhinus","Carcharhinus obscurus","Dusky shark",32.7639934415862
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Carcharhinidae","Carcharhinus","Carcharhinus plumbeus","Sandbar shark",22.2137323348923
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Carcharhinidae","Carcharhinus","Carcharhinus acronotus","Blacknose shark",9.17000172540452
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Carcharhinidae","Carcharhinus","Carcharhinus limbatus","Blacktip shark",10.0591562246926
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Carcharhinidae","Carcharhinus","Carcharhinus isodon","Finetooth shark",9.18597132791597
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Carcharhinidae","Prionace","Prionace glauca","Blue shark",14.4986152166115
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Sphyrnidae","Sphyrna","Sphyrna tiburo","Bonnethead shark",8.08311481624715
+"Animalia","Chordata","Elasmobranchii","Carcharhiniformes","Sphyrnidae","Sphyrna","Sphyrna lewini","Scalloped hammerhead",19.9249648090999
+"Animalia","Chordata","Elasmobranchii","Squaliformes","Squalidae","Squalus","Squalus acanthias","Spiny dogfish",23.446591063539
+"Animalia","Chordata","Elasmobranchii","Squaliformes","Squalidae","Squalus","Squalus suckleyi","Spotted spiny dogfish",36.5276737241636
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Raja","Raja binoculata","Big skate",12.5868689209395
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Raja","Raja rhina","Longnose skate",14.1773007024158
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Raja","Raja eglanteria","Clearnose skate",10.5655122066588
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Raja","Raja brachyura","Blonde ray",12.8636198356317
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Raja","Raja clavata","Thornback skate",13.0344557363599
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Arhynchobatidae","Bathyraja","Bathyraja parmifera","Alaska skate",18.7909410640818
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Clupea","Clupea harengus","Herring",9.09397706707385
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Sardinops","Sardinops sagax","Sardine",6.49804571576141
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Brevoortia","Brevoortia tyrannus","Atlantic menhaden",4.98120830804354
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Brevoortia","Brevoortia patronus","Gulf menhaden",4.21092792284831
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Dussumieriidae","Etrumeus","Etrumeus sadina","Round herring",3.23029835582461
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Sardinella","Sardinella aurita","Round sardinella",4.0717210928234
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Sprattus","Sprattus sprattus","Sprat",3.84993068331996
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Sardina","Sardina pilchardus","European pilchard",5.60963976421492
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Engraulidae","Engraulis","Engraulis encrasicolus","Anchovy",2.97362429129758
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Engraulidae","Engraulis","Engraulis japonicus","Japanese anchovy",1.78870396225854
+"Animalia","Chordata","Actinopterygii","Salmoniformes","Salmonidae","Oncorhynchus","Oncorhynchus gorbuscha","Pink salmon",4.02958601099184
+"Animalia","Chordata","Actinopterygii","Salmoniformes","Salmonidae","Oncorhynchus","Oncorhynchus keta","Chum salmon",3.75072432914297
+"Animalia","Chordata","Actinopterygii","Salmoniformes","Salmonidae","Oncorhynchus","Oncorhynchus nerka","Sockeye salmon",4.04115727445934
+"Animalia","Chordata","Actinopterygii","Osmeriformes","Osmeridae","Mallotus","Mallotus villosus","Capelin",3.13110526716977
+"Animalia","Chordata","Actinopterygii","Osmeriformes","Osmeridae","Thaleichthys","Thaleichthys pacificus","Eulachon",4.17036502752098
+"Animalia","Chordata","Actinopterygii","Osmeriformes","Argentinidae","Argentina","Argentina silus","Greater silver smelt",9.89280209800494
+"Animalia","Chordata","Actinopterygii","Lophiiformes","Lophiidae","Lophius","Lophius americanus","Monkfish",14.3360943363136
+"Animalia","Chordata","Actinopterygii","Lophiiformes","Lophiidae","Lophius","Lophius piscatorius","White anglerfish",9.32792963472871
+"Animalia","Chordata","Actinopterygii","Lophiiformes","Lophiidae","Lophius","Lophius budegassa","Black bellied angler",10.282707518356
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Gadus","Gadus macrocephalus","Pacific cod",6.11288008136262
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Gadus","Gadus morhua","Atlantic cod",9.09524086501685
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Theragra","Theragra chalcogramma","Walleye pollock",6.21938278503483
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Pollachius","Pollachius virens","Pollock",12.1348697897267
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Pollachius","Pollachius pollachius","European pollack",6.82250296480468
+"Animalia","Chordata","Actinopterygii","Gadiformes","Phycidae","Urophycis","Urophycis chuss","Red hake",9.20507426166449
+"Animalia","Chordata","Actinopterygii","Gadiformes","Phycidae","Urophycis","Urophycis tenuis","White hake",13.0436481590631
+"Animalia","Chordata","Actinopterygii","Gadiformes","Lotidae","Brosme","Brosme brosme","Cusk",12.5289674713135
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Melanogrammus","Melanogrammus aeglefinus","Haddock",7.28675103307627
+"Animalia","Chordata","Actinopterygii","Gadiformes","Phycidae","Phycis","Phycis blennoides","Greater forkbeard",5.96664079197052
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Trisopterus","Trisopterus minutus","Poor cod",3.07142776673252
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Trisopterus","Trisopterus esmarkii","Norway Pout",2.45555042684558
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Merlangius","Merlangius merlangus","Whiting",5.43731133994248
+"Animalia","Chordata","Actinopterygii","Gadiformes","Lotidae","Molva","Molva molva","Ling",12.2912336957294
+"Animalia","Chordata","Actinopterygii","Gadiformes","Lotidae","Molva","Molva dypterygia","Blue ling",12.3008001843739
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Micromesistius","Micromesistius poutassou","Blue whiting",6.04709127912748
+"Animalia","Chordata","Actinopterygii","Gadiformes","Gadidae","Micromesistius","Micromesistius australis","Southern blue whiting",10.5046403359932
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius bilinearis","Silver Hake",5.74439011935408
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius productus","Pacific hake",6.53669666764688
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius merluccius","Hake",9.69307723997866
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius paradoxus","Deep-water cape hake",11.0068286651276
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius australis","Southern hake",12.1489657213016
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius capensis","Shallow-water cape hake",13.6008379515571
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius gayi gayi","South Pacific Hake",7.97798050257068
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius hubbsi","Argentine hake",7.24440250610744
+"Animalia","Chordata","Actinopterygii","Ophidiiformes","Ophidiidae","Genypterus","Genypterus blacodes","New Zealand ling",15.2323288564609
+"Animalia","Chordata","Actinopterygii","Ophidiiformes","Ophidiidae","Genypterus","Genypterus capensis","Kingklip",12.0212650992719
+"Animalia","Chordata","Actinopterygii","Gadiformes","Macrouridae","Coryphaenoides","Coryphaenoides rupestris","Roundnose grenadier",22.0782259802419
+"Animalia","Chordata","Actinopterygii","Gadiformes","Macrouridae","Macrourus","Macrourus berglax","Roughhead grenadier",22.4179503079594
+"Animalia","Chordata","Actinopterygii","Beloniformes","Scomberesocidae","Cololabis","Cololabis saira","Pacific saury",3.04509584815214
+"Animalia","Chordata","Actinopterygii","Beryciformes","Trachichthyidae","Hoplostethus","Hoplostethus atlanticus","Orange roughy",17.483834986086
+"Animalia","Chordata","Actinopterygii","Beryciformes","Berycidae","Beryx","Beryx spp","Beryx spp.",11.2712684269232
+"Animalia","Chordata","Actinopterygii","Beryciformes","Berycidae","Beryx","Beryx splendens","Alfonsino",10.0189985027133
+"Animalia","Chordata","Actinopterygii","Perciformes","Caproidae","Capros","Capros aper","Boarfish",6.2624987343604
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes spp","Sebastes species",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes aleutianus","Rougheye rockfish",41.8816329716759
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes alutus","Pacific ocean perch",22.9035535344329
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes auriculatus","Brown rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes aurora","Aurora rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes borealis","Shortraker rockfish",39.5123785632093
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes caurinus","Copper rockfish",23.5858215569172
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes crameri","Darkblotched rockfish",30.0266888458574
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes diploproa","Splitnose Rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes elongatus","Greenstriped rockfish",21.0132421912009
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes entomelas","Widow rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes flavidus","Yellowtail rockfish",26.2104495739408
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes goodei","Chilipepper rockfish",14.3179187246701
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes jordani","Shortbelly rockfish",14.2039813093025
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes maliger","Quillback rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes melanops","Black rockfish",19.6050602813442
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes melanostomus","Blackgill rockfish",39.4278814175597
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes mystinus","Blue rockfish",18.1081217810383
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes nebulosus","China rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes paucispinis","Bocaccio",18.9978641844141
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes pinniger","Canary rockfish",38.0719387256601
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes polyspinis","Northern rockfish",21.2784977249815
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes ruberrimus","Yelloweye rockfish",45.1563415473852
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes zacentrus","Sharpchin rockfish",26.3875305316146
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes chlorostictus","Greenspotted rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes levis","Cowcod",25.4269581781677
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes mentella","Deepwater redfish",29.0854937173477
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes rufus","Bank Rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes carnatus","Gopher rockfish",23.8153929759545
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes fasciatus","Acadian redfish",16.7105070671539
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes norvegicus","Golden Redfish",28.7673013819787
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastolobus","Sebastolobus alascanus","Shortspine thornyhead",50.885744768187
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastolobus","Sebastolobus altivelis","Longspine thornyhead",32.9830551383337
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastolobus","Sebastolobus macrochir","Broadbanded thornyhead",28.8162978385115
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Scorpaenidae","Scorpaena","Scorpaena guttata","California scorpionfish",9.56328864263905
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Triglidae","Eutrigla","Eutrigla gurnardus","Grey gurnard",6.46817314980965
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Hexagrammidae","Hexagrammos","Hexagrammos decagrammus","Kelp greenling",4.3448937597847
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Hexagrammidae","Ophiodon","Ophiodon elongatus","Lingcod",7.25635361072457
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Hexagrammidae","Pleurogrammus","Pleurogrammus monopterygius","Atka mackerel",5.57653885880863
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Anoplopomatidae","Anoplopoma","Anoplopoma fimbria","Sablefish",9.69171508651479
+"Animalia","Chordata","Actinopterygii","Perciformes","Moronidae","Morone","Morone saxatilis","Striped bass",13.1092024999449
+"Animalia","Chordata","Actinopterygii","Perciformes","Serranidae","Centropristis","Centropristis striata","Black sea bass",5.0954066838628
+"Animalia","Chordata","Actinopterygii","Perciformes","Serranidae","Epinephelus","Epinephelus itajara","Goliath grouper",17.1627648711244
+"Animalia","Chordata","Actinopterygii","Perciformes","Serranidae","Epinephelus","Hyporthodus flavolimbatus","Yellowedge grouper",13.497962779764
+"Animalia","Chordata","Actinopterygii","Perciformes","Serranidae","Epinephelus","Epinephelus morio","Red grouper",13.2125947942819
+"Animalia","Chordata","Actinopterygii","Perciformes","Serranidae","Epinephelus","Hyporthodus niveatus","Snowy grouper",16.5952841745163
+"Animalia","Chordata","Actinopterygii","Perciformes","Serranidae","Mycteroperca","Mycteroperca microlepis","Gag",11.4942718825695
+"Animalia","Chordata","Actinopterygii","Perciformes","Serranidae","Mycteroperca","Mycteroperca bonaci","Black grouper",14.5365926243189
+"Animalia","Chordata","Actinopterygii","Perciformes","Epigonidae","Epigonus","Epigonus telescopus","Black cardinalfish",33.6915412119579
+"Animalia","Chordata","Actinopterygii","Perciformes","Epigonidae","Epigonus","Epigonus crassicaudus","Deepwater cardinalfish",14.932945304954
+"Animalia","Chordata","Actinopterygii","Perciformes","Malacanthidae","Caulolatilus","Caulolatilus microps","Blueline tilefish",9.5778057724505
+"Animalia","Chordata","Actinopterygii","Perciformes","Malacanthidae","Lopholatilus","Lopholatilus chamaeleonticeps","Tilefish",18.5642887777083
+"Animalia","Chordata","Actinopterygii","Perciformes","Pomatomidae","Pomatomus","Pomatomus saltatrix","Bluefish",7.0476587019227
+"Animalia","Chordata","Actinopterygii","Perciformes","Rachycentridae","Rachycentron","Rachycentron canadum","Cobia",6.37799410774136
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Trachurus","Trachurus trachurus","Horse mackerel",6.89216211415692
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Trachurus","Trachurus mediterraneus","Mediterranean horse mackerel",5.54975574311347
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Trachurus","Trachurus picturatus","Blue jack mackerel",8.54769692937444
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Trachurus","Trachurus trecae","Cunene horse mackerel",5.83264551225912
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Trachurus","Trachurus murphyi","Chilean jack mackerel",11.886716717435
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Trachurus","Trachurus capensis","Cape horse mackerel",7.2187472750812
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Pseudocaranx","Pseudocaranx dentex","Trevally",5.97426264089037
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Seriola","Seriola dumerili","Greater amberjack",5.71125991826071
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Seriola","Seriola quinqueradiata","Japanese amberjack",5.36034178716605
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Decapterus","Decapterus muroadsi","Amberstripe scad",1.86864157164202
+"Animalia","Chordata","Actinopterygii","Perciformes","Arripidae","Arripis","Arripis trutta","Australian salmon",4.71650316253668
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Lutjanus","Lutjanus analis","Mutton snapper",10.7146899474054
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Lutjanus","Lutjanus campechanus","Red snapper",10.4136849408875
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Lutjanus","Lutjanus vivanus","Silk snapper",13.5742176204609
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Etelis","Etelis coruscans","Flame snapper",10.9803743586003
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Ocyurus","Ocyurus chrysurus","Yellowtail snapper",8.13522863405252
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Rhomboplites","Rhomboplites aurorubens","Vermilion snapper",9.01916104478712
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Pristipomoides","Pristipomoides filamentosus","Crimson jobfish",7.87227517766393
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Pristipomoides","Pristipomoides sieboldii","Lavender jobfish",6.04626019359376
+"Animalia","Chordata","Actinopterygii","Perciformes","Haemulidae","Brachydeuterus","Brachydeuterus auritus","Bigeye grunt",3.96434226272027
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Stenotomus","Stenotomus chrysops","Scup",8.26598762944073
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Archosargus","Archosargus rhomboidalis","Sea bream",1.8961862461185
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Pagrus","Pagrus pagrus","Common seabream",9.02958457244647
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Pagellus","Pagellus bogaraveo","Red seabream",9.94381759864568
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Pagellus","Pagellus erythrinus","Common pandora",7.41210968218526
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Dentex","Dentex macrophthalmus","Large-eye dentex",7.44270720351949
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Chrysophrys","Pagrus auratus","New Zealand snapper",13.9898929866244
+"Animalia","Chordata","Actinopterygii","Perciformes","Sciaenidae","Cynoscion","Cynoscion regalis","Weakfish",7.92386214627213
+"Animalia","Chordata","Actinopterygii","Perciformes","Sciaenidae","Micropogonias","Micropogonias undulatus","Atlantic croaker",3.39606414963308
+"Animalia","Chordata","Actinopterygii","Perciformes","Mullidae","Mullus","Mullus surmuletus","Surmullet",4.93661405058144
+"Animalia","Chordata","Actinopterygii","Perciformes","Mullidae","Mullus","Mullus barbatus barbatus","Red mullet",5.25902612380845
+"Animalia","Chordata","Actinopterygii","Perciformes","Cheilodactylidae","Nemadactylus","Nemadactylus macropterus","Hawaiian morwong",17.5455680379323
+"Animalia","Chordata","Actinopterygii","Perciformes","Moronidae","Dicentrarchus","Dicentrarchus labrax","European seabass",10.377323017774
+"Animalia","Chordata","Actinopterygii","Perciformes","Mugilidae","Mugil","Mugil cephalus","Sea mullet",8.0263613719123
+"Animalia","Chordata","Actinopterygii","Perciformes","Labridae","Lachnolaimus","Lachnolaimus maximus","Hogfish",7.62967654574387
+"Animalia","Chordata","Actinopterygii","Perciformes","Trichodontidae","Arctoscopus","Arctoscopus japonicus","Sailfin sandfish",6.85336930027138
+"Animalia","Chordata","Actinopterygii","Perciformes","Uranoscopidae","Kathetostoma","Kathetostoma giganteum","Giant stargazer",8.18904778217115
+"Animalia","Chordata","Actinopterygii","Perciformes","Anarhichadidae","Anarhichas","Anarhichas lupus","Atlantic wolffish",20.6487044608625
+"Animalia","Chordata","Actinopterygii","Perciformes","Ammodytidae","Ammodytes","Ammodytes hexapterus","Pacific sand lance",3.91928631377976
+"Animalia","Chordata","Actinopterygii","Perciformes","Ammodytidae","Ammodytes","Ammodytes marinus","Sand eel",3.36746998684406
+"Animalia","Chordata","Actinopterygii","Perciformes","Trichiuridae","Trichiurus","Trichiurus lepturus","Largehead hairtail",5.5450946330016
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Katsuwonus","Katsuwonus pelamis","Skipjack tuna",3.1523070893021
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Scomber","Scomber japonicus","Chub mackerel",5.47069506890698
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Scomber","Scomber colias","Atlantic chub mackerel",5.99591446504067
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Scomber","Scomber scombrus","Mackerel",7.62752700461277
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Scomber","Scomber australasicus","Blue mackerel",4.66001029308336
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Thunnus","Thunnus alalunga","Albacore tuna",10.7034733676193
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Thunnus","Thunnus thynnus","Atlantic bluefin tuna",18.2254642156496
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Thunnus","Thunnus orientalis","Pacific bluefin tuna",9.70913167854817
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Thunnus","Thunnus albacares","Yellowfin tuna",5.39627752078647
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Thunnus","Thunnus obesus","Bigeye tuna",8.71850139159943
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Thunnus","Thunnus maccoyii","Southern bluefin tuna",12.057806405294
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Scomberomorus","Scomberomorus cavalla","King Mackerel",9.11885562950308
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Scomberomorus","Scomberomorus maculatus","Spanish mackerel",6.3891630444225
+"Animalia","Chordata","Actinopterygii","Perciformes","Scombridae","Scomberomorus","Scomberomorus niphonius","Japanese Spanish mackerel",4.47201375014351
+"Animalia","Chordata","Actinopterygii","Perciformes","Xiphiidae","Xiphias","Xiphias gladius","Swordfish",10.502905086167
+"Animalia","Chordata","Actinopterygii","Perciformes","Istiophoridae","Makaira","Makaira nigricans","Blue marlin",7.44098841149507
+"Animalia","Chordata","Actinopterygii","Perciformes","Istiophoridae","Makaira","Makaira mazara","Indo-Pacific blue marlin",11.4718097269414
+"Animalia","Chordata","Actinopterygii","Perciformes","Istiophoridae","Tetrapturus","Kajikia albida","White Marlin",4.74787996585675
+"Animalia","Chordata","Actinopterygii","Perciformes","Centrolophidae","Hyperoglyphe","Hyperoglyphe antarctica","Bluenose",12.8522119782672
+"Animalia","Chordata","Actinopterygii","Perciformes","Centrolophidae","Seriolella","Seriolella brama","whario",7.86184762060099
+"Animalia","Chordata","Actinopterygii","Perciformes","Centrolophidae","Seriolella","Seriolella punctata","Silverfish",6.73054268492626
+"Animalia","Chordata","Actinopterygii","Perciformes","Stromateidae","Peprilus","Peprilus triacanthus","Atlantic butterfish",2.39844356421466
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Paralichthyidae","Paralichthys","Paralichthys dentatus","Summer flounder",4.57521316464636
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Paralichthyidae","Paralichthys","Paralichthys olivaceus","Olive flounder",6.84417242287752
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Scophthalmidae","Scophthalmus","Scophthalmus aquosus","Windowpane",5.92291571428943
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Scophthalmidae","Scophthalmus","Scophthalmus maximus","Turbot",7.60029173755264
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Scophthalmidae","Scophthalmus","Scophthalmus rhombus","Brill",3.95472804567981
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Scophthalmidae","Lepidorhombus","Lepidorhombus spp","Megrim spp.",8.89771873518217
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Scophthalmidae","Lepidorhombus","Lepidorhombus boscii","Fourspotted megrim",7.76799034384275
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Scophthalmidae","Lepidorhombus","Lepidorhombus whiffiagonis","Megrim",9.59748734999459
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Atheresthes","Atheresthes evermanni","Kamchatka flounder",16.6801917180433
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Clidoderma","Clidoderma asperrimum","Roughscale sole",9.58317385536993
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Eopsetta","Eopsetta jordani","Petrale sole",13.6699719510374
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Eopsetta","Eopsetta grigorjewi","Round-nose flounder",9.17205651585856
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Glyptocephalus","Glyptocephalus cynoglossus","Witch flounder",11.0641432871254
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Hippoglossoides","Hippoglossoides elassodon","Flathead sole",12.1994989106232
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Hippoglossoides","Hippoglossoides platessoides","American plaice",13.7973889510635
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Limanda","Limanda limanda","Dab",7.36828595640826
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Microstomus","Microstomus pacificus","Dover sole",19.9188294796673
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Platichthys","Platichthys stellatus","Starry flounder",9.71318029679015
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Platichthys","Platichthys flesus","European flounder",9.08507523826296
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Pleuronectes","Pleuronectes quadrituberculatus","Alaska plaice",19.0733284647536
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Pleuronectes","Pleuronectes platessa","European Plaice",15.4537100199949
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Pseudopleuronectes","Pseudopleuronectes americanus","Winter flounder",6.84173157460433
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Limanda","Limanda aspera","Yellowfin sole",15.8851201406399
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Limanda","Limanda ferruginea","Yellowtail flounder",8.95851475308921
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Lepidopsetta","Lepidopsetta bilineata","Rock sole",13.7588515640869
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Parophrys","Parophrys vetulus","English sole",8.33172038113249
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Reinhardtius","Reinhardtius hippoglossoides","Greenland halibut",24.6585822516642
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Hippoglossus","Hippoglossus stenolepis","Pacific halibut",21.6420917437537
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Hippoglossus","Hippoglossus hippoglossus","Atlantic Halibut",22.857785710313
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Cleisthenes","Cleisthenes herzensteini","Pointhead flounder",10.3997342142896
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Glyptocephalus","Glyptocephalus zachirus","Rex sole",9.84053013920839
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Soleidae","Solea","Solea vulgaris","common European sole",NA
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Soleidae","Solea","Solea solea","Common sole",6.63525788221724
+"Animalia","Chordata","Actinopterygii","Tetraodontiformes","Balistidae","Balistes","Balistes capriscus","Gray triggerfish",3.26640437695857
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Macruronus","Macruronus magellanicus","Patagonian grenadier",11.4710406920316
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Merluccius","Merluccius polli","Benguela hake",6.5386286247788
+"Animalia","Chordata","Actinopterygii","Gadiformes","Moridae","Laemonema","Laemonema longipes","Longfin codling",9.31967514322494
+"Animalia","Chordata","Actinopterygii","Perciformes","Gempylidae","Rexea","Rexea solandri","common gemfish",8.68503495274767
+"Animalia","Chordata","Actinopterygii","Perciformes","Istiophoridae","Istiophorus","Istiophorus albicans","Sailfish",3.34277083054973
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Clupea","Clupea pallasii pallasii","Pacific herring",6.25841001047374
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Clupeonella","Clupeonella engrauliformis","Anchovy kilka",3.50116071528644
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Sardinops","Sardinops sagax","Japanese pilchard",6.49804571576141
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Strangomera","Clupea bentincki","Araucanian herring",4.05359878789407
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Ethmalosa","Ethmalosa fimbriata","Bonga",4.15681319309998
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Engraulidae","Engraulis","Engraulis anchoita","Argentine anchoita",3.15010945891331
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Engraulidae","Engraulis","Engraulis ringens","Peruvian anchoveta",1.94209226969917
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Farfantepenaeus","Farfantepenaeus aztecus","Brown shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Farfantepenaeus","Farfantepenaeus duorarum","Pink shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Farfantepenaeus","Farfantepenaeus notialis","Southern pink shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Penaeidae","Litopenaeus","Litopenaeus setiferus","White shrimp",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Nephropidae","Metanephrops","Metanephrops challengeri","Scampi",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Palinuridae","Jasus","Jasus lalandii","South African west coast rock lobster",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Palinuridae","Palinurus","Palinurus gilchristi","Southern spiny lobster",NA
+"Animalia","Mollusca","Cephalopoda","Myopsida","Loliginidae","Loligo","Heterololigo bleekeri","Spear squid",NA
+"Animalia","Mollusca","Cephalopoda","Myopsida","Loliginidae","Uroteuthis","Uroteuthis edulis","Swordtip squid",NA
+"Animalia","Mollusca","Cephalopoda","Octopoda","Enteroctopodidae","Enteroctopus","Enteroctopus dofleini","Giant Pacific octopus",NA
+"Animalia","Mollusca","Cephalopoda","Oegopsida","Ommastrephidae","Todarodes","Todarodes pacificus","Japanese common squid",NA
+"Animalia","Mollusca","Cephalopoda","Myopsida","Loliginidae","Loligo","Loligo vulgaris reynaudii","Cape Hope squid",NA
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Dipturus","Dipturus batis","Common skate",23.9368079516213
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Leucoraja","Leucoraja erinacea","Little skate",8.67199966988023
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Leucoraja","Leucoraja garmani","Rosette skate",12.3379947716906
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Dipturus","Dipturus laevis","Barndoor skate",13.6678470916439
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Leucoraja","Leucoraja ocellata","Winter skate",13.8568552906229
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Amblyraja","Amblyraja radiata","Thorny skate",14.4799507601811
+"Animalia","Chordata","Elasmobranchii","Rajiformes","Rajidae","Malacoraja","Malacoraja senta","Smooth skate",14.5435823237005
+"Animalia","Chordata","Actinopterygii","Clupeiformes","Clupeidae","Clupea","Clupea bentincki","Chilean herring",4.05359878789407
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Atheresthes","Atheresthes stomias","Arrowtooth flounder",14.9480881176967
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Hippoglossoides","Hippoglossoides dubius","Flathead flounder",18.8066005284368
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Pseudopleuronectes","Pseudopleuronectes herzensteini","Yellow striped flounder",6.96371331444767
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Scophthalmidae","Psetta","Scophthalmus maximus","Turbot",7.60029173755264
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Lepidopsetta","Lepidopsetta polyxystra","Northern rock sole",9.99327055057028
+"Animalia","Arthropoda","Malacostraca","Decapoda","Geryonidae","Chaceon","Chaceon quinquedens","Red deepsea crab",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Pandalidae","Pandalus","Pandalus eous","Alaskan pink shrimp",NA
+"Animalia","Chordata","Actinopterygii","Beryciformes","Berycidae","Centroberyx","Centroberyx affinis","Redfish",6.05838124967011
+"Animalia","Chordata","Actinopterygii","Beryciformes","Berycidae","Centroberyx","Centroberyx gerrardi","Bight redfish",7.23967142866254
+"Animalia","Chordata","Actinopterygii","Gadiformes","Merlucciidae","Macruronus","Macruronus novaezelandiae","Hoki",11.5236261329033
+"Animalia","Chordata","Actinopterygii","Osmeriformes","Argentinidae","Glossanodon","Glossanodon semifasciatus","Deep-sea smelt",2.40813959045173
+"Animalia","Chordata","Actinopterygii","Zeiformes","Oreosomatidae","Pseudocyttus","Pseudocyttus maculatus","Smooth oreo",17.8327390958205
+"Animalia","Chordata","Actinopterygii","Zeiformes","Oreosomatidae","Allocyttus","Allocyttus niger","Black oreo",23.9100608263311
+"Animalia","Chordata","Actinopterygii","Perciformes","Ammodytidae","Ammodytes","Ammodytes personatus","Pacific sandlance",4.25228485948284
+"Animalia","Chordata","Actinopterygii","Perciformes","Zoarcidae","Zoarces","Zoarces americanus","Ocean pout",11.0400815151868
+"Animalia","Chordata","Actinopterygii","Anguilliformes","Congridae","Conger","Conger myriaster","Whitespotted conger",11.7807412329188
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Caranx","Caranx rhonchus","False scad",4.62886050544683
+"Animalia","Chordata","Actinopterygii","Perciformes","Carangidae","Trachurus","Trachurus japonicus","Japanese jack mackerel",4.11398657161949
+"Animalia","Chordata","Actinopterygii","Perciformes","Nototheniidae","Dissostichus","Dissostichus eleginoides","Patagonian toothfish",18.2586571999837
+"Animalia","Chordata","Actinopterygii","Perciformes","Nototheniidae","Dissostichus","Dissostichus mawsoni","Antarctic toothfish",19.4173427195224
+"Animalia","Chordata","Actinopterygii","Perciformes","Lutjanidae","Paracaesio","Paracaesio caerulea","Japanese snapper",9.14024681992109
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Platycephalidae","Neoplatycephalus","Platycephalus richardsoni","Tiger flathead",7.61309509016484
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Platycephalidae","Platycephalus","Platycephalus conatus","Deepwater flathead",6.67470137052933
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Hexagrammidae","Pleurogrammus","Pleurogrammus azonus","Okhotsk atka mackerel",6.05027528843802
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Sebastidae","Sebastes","Sebastes variabilis","Dusky rockfish",16.691765798876
+"Animalia","Chordata","Actinopterygii","Perciformes","Malacanthidae","Branchiostegus","Branchiostegus japonicus","Horsehead tilefish",5.74589640991544
+"Animalia","Chordata","Actinopterygii","Perciformes","Polynemidae","Galeoides","Galeoides decadactylus","Threadfin",4.93471892709158
+"Animalia","Chordata","Actinopterygii","Perciformes","Sillaginidae","Sillago","Sillago flindersi","School whiting",3.25250782820963
+"Animalia","Chordata","Actinopterygii","Tetraodontiformes","Monacanthidae","Thamnaconus","Thamnaconus modestus","Black scraper",2.85022109545757
+"Animalia","Chordata","Actinopterygii","Tetraodontiformes","Tetraodontidae","Takifugu","Takifugu rubripes","Japanese pufferfish",4.17943081510816
+"Animalia","Chordata","Actinopterygii","Perciformes","Sciaenidae","Pseudotolithus","Pseudotolithus elongatus","Bobo croaker",6.08545879143487
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Pagrus","Pagrus major","Red seabream",8.71989117116258
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Pagellus","Pagellus bellottii","Red pandora",5.08553717142763
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Sparus","Sparus aurata","Gilthead seabream",6.73968694816973
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Dentex","Dentex tumifrons","Yellow sea bream",6.4362644339373
+"Animalia","Chordata","Actinopterygii","Perciformes","Sparidae","Spicara","Spicara smaris","Picarel",3.45211299032328
+"Animalia","Arthropoda","Malacostraca","Decapoda","Lithodidae","Lithodes","Lithodes aequispinus","Golden king crab",NA
+"Animalia","Arthropoda","Malacostraca","Decapoda","Palinuridae","Jasus","Jasus edwardsii","Red rock lobster",NA
+"Animalia","Chordata","Actinopterygii","Lophiiformes","Lophiidae","Lophius","Lophius litulon","Yellow goosefish",11.5396859565012
+"Animalia","Chordata","Actinopterygii","Scorpaeniformes","Cottidae","Scorpaenichthys","Scorpaenichthys marmoratus","Cabezon",6.87921766908207
+"Animalia","Chordata","Actinopterygii","Perciformes","Istiophoridae","Istiompax","Istiompax indica","Black marlin",5.0697657112815
+"Animalia","Chordata","Actinopterygii","Perciformes","Istiophoridae","Kajikia","Kajikia audax","Striped marlin",5.1375910141892
+"Animalia","Chordata","Actinopterygii","Pleuronectiformes","Pleuronectidae","Tanakius","Tanakius kitaharae","Willowy flounder",8.79204967470047
