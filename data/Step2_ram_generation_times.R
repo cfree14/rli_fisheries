@@ -56,7 +56,7 @@ spp_key <- taxa_key %>%
 # Export
 write.csv(spp_key, file=file.path(datadir, "ram4.41_generation_times_finfish_only.csv"), row.names=F)
 
-
+hist(spp_key$g_yr, breaks=seq(0,60,2))
 
 
 
