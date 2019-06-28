@@ -203,7 +203,9 @@ stocks <- stock_key %>%
   left_join(stats, by="stockid")
 
 #Add species and common name
-data$species <- stocks[match(data$stockid, stocks$stockid),'species']
+data$genus <- sub('.*\\s','',stocks[match(data$stockid, stocks$stockid),'species']) ##NP
+data$species <- sub('\\s.*','',stocks[match(data$stockid, stocks$stockid),'species']) ##NP
+data$genus_species <- stocks[match(data$stockid, stocks$stockid),'species'] ##NP
 data$comm_name <- stocks[match(data$stockid, stocks$stockid),'comm_name']
 
 
