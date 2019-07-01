@@ -43,6 +43,9 @@ stock_key <- stock %>%
   left_join(select(assess_info, stockid, assessid, assessmethod), by="stockid") %>% 
   # Rename columns
   rename(species=scientificname, comm_name=commonname, area=areaname, method=assessmethod) %>% 
+  # Add taxonomy
+  left_join(select(taxonomy, phylum, classname, ordername, family, scientificname), by=c("species"="scientificname")) %>% 
+  rename(class=classname, order=ordername) %>% 
   # Format columns
   mutate(comm_name=freeR::sentcase(comm_name),
          species=gsub("spp.", "spp", species),
@@ -62,7 +65,11 @@ stock_key <- stock %>%
                                     "Tetrapturus albidus"="Kajikia albida",
                                     "Sardinops melanostictus"="Sardinops sagax"))) %>% 
   # Rearrange columns
-  select(stockid, stocklong, assessid, method, country, region, area, species, comm_name) 
+  select(stockid, stocklong, assessid, method, country, region, area, 
+         species, comm_name, phylum, class, order, family) 
+
+# Fill missing taxonomic info
+stock_key[stock_key$species=="Lepidorhombus spp", c("phylum", "class", "order", "family")] <- c("Chordata",	"Actinopterygii",	"Pleuronectiformes", "Scophthalmidae")
 
 # Check names
 # freeR::check_names(stock_key$species)
@@ -133,8 +140,9 @@ ts_stats <- ts_data %>%
 
 # Data selection process:
 # 1. No salmon
-# 1. SSB > TB > TN (but TB used if it offers 5% more data)
-# 2. F/FMSY > U/UMSY (because F/FMSY always from assessment)
+# 2. No invertebrates
+# 3. SSB > TB > TN (but TB used if it offers 5% more data)
+# 4. F/FMSY > U/UMSY (because F/FMSY always from assessment)
 
 g <- ggplot(ts_stats, aes(x=uumsy_nyr, y=ffmsy_nyr, color=uumsy_source)) +
   geom_point() + 
@@ -149,17 +157,20 @@ nyr_b_req <- 25
 # Build use key
 ts_use <- ts_stats %>% 
   # 1. Remove salmon stocks
-  left_join(select(stock_key, stockid, region), by="stockid") %>% 
+  left_join(select(stock_key, stockid, region, phylum), by="stockid") %>% 
   filter(!grepl("Salmon", region)) %>% 
   select(-region) %>% 
-  # 2. Remove stocks with insufficient biomass info
+  # 2. Remove invertebrate stocks
+  filter(phylum=="Chordata") %>% 
+  select(-phylum) %>% 
+  # 3. Remove stocks with insufficient biomass info
   filter(ssb_nyr >= nyr_b_req | tb_nyr >= nyr_b_req | tn_nyr >= nyr_b_req) %>% 
-  # 3. Identify which biomass time series to use
+  # 4. Identify which biomass time series to use
   mutate(b_use=ifelse(ssb_nyr>=0.95*tb_nyr & ssb_nyr>=0.95*tn_nyr, "SSB", 
                       ifelse(tb_nyr>=0.95*tn_nyr, "TB", "TN")),
          b_units=ifelse(b_use=="SSB", ssb_units,
                         ifelse(b_use=="TB", tb_units, tn_units))) %>% 
-  # 4. Identify which F/FMSY time series to use
+  # 5. Identify which F/FMSY time series to use
   mutate(ffmsy_use=ifelse(ffmsy_nyr==0 & uumsy_nyr==0, "none",
                           ifelse(ffmsy_nyr>=0.95*uumsy_nyr, "F/FMSY", "U/UMSY")))
 
@@ -204,9 +215,10 @@ stocks <- stock_key %>%
 # Export data
 save(stocks, data, file=file.path(datadir, "ram4.41_for_analysis.Rdata"))
 
+sum(stocks$ffmsy_source!="none")
 table(stocks$ffmsy_source)
 table(stocks$biomass_units)
-
+table(stocks$biomass_type)
 
 # What propotion of total catch?
 ################################################################################
