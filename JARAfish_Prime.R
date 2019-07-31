@@ -12,23 +12,24 @@ library("fitdistrplus")
 library("crayon") ##NP
 library(logspline) ##NP
 library(svDialogs) ##NP
-source("C:/Postdoc_analyses/RLA_NWAtlantic/autojags_NP.R")
+source("autojags_NP.R")
 library(beepr)
 
-load("./data/ramldb/ram4.41_for_analysis.Rdata")
+load("ram4.41_for_analysis_NP.Rdata")
 GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generation_times_finfish_only.csv")
 
 
-file_list_fish <- unique(stocks$genus_species[stocks$]) # add column fish
-i<- 1
+file_list <- sort(unique(stocks$genus_species)) # add column fish
+# i <- 1
 
 # see which fish we don't have the GL
-GL_df_noNA <- GL_df[!is.na(GL_df$g_yr), ]
-file_list[!(file_list %in% GL_df_noNA$species)]
+# GL_df_noNA <- GL_df[!is.na(GL_df$g_yr), ]
+# file_list[!(file_list %in% GL_df_noNA$species)]
 
 
 
-for(i in 1:length(file_list)){
+# for(i in 1:length(file_list)){
+for(i in 1:10){
   cat(yellow(paste0('\nSpecies : ', file_list[i])))
   
   # Set Working directory file, where assessments are stored 
@@ -46,18 +47,18 @@ for(i in 1:length(file_list)){
   sp.assess <- data.frame('assessment' = file_list[i]
                           , 'run' = 1
                           , 'abundance' = 'relative'
-                          , 'generation.length' = if(file_list[i] %in% GL_df$species & !is.na(GL_df$g_yr[GL_df$species == file_list[i]])){GL_df$g_yr[GL_df$species == file_list[i]]}else{NA}
+                          , 'generation.length' = stocks$GL[stocks$genus_species == file_list[i]][1]
                           , 'start.year' = NA
                           , 'end.year' = NA
                           , 'index.se' = FALSE
                           , 'sigma.obs.est ' = TRUE
-                          , 'sigma.obs.add' = 0.25
+                          , 'sigma.obs.add' = 0.1
                           , 'project.r' = 'years'
                           , 'sigma.proc.fixed' = FALSE
                           , 'stochastic.projection' = FALSE
                           , 'Klim' = FALSE
                           , 'K.manual' = FALSE
-                          , 'A1' = FALSE
+                          , 'A1' = TRUE
                           )
   
   # Select assessment species
