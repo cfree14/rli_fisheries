@@ -83,6 +83,7 @@ cat(paste0("\n","><>><>><>><>><>><>><>><>","\n","\n"))
 # For only using data corresponding to 3 x generation  
 # Set GL3.dat =TRUE and GL3.dat =FALSE otherwise 
 
+if(GL<=3.33){GL<-3.33} ##NP Because criterion A is assess over the longer between 10y or 3GL
 GL1 = round(GL,0) # rounded for r.recent
 GL3 = round(3*GL,0) # 3 x GL rounded for year steps
 
@@ -659,7 +660,7 @@ write.table(Rhat,file=paste0("./Outputs/Rhat/", file_list[i],"_Rhat.txt"))
 #----------------
 # Set up output
 #---------------
-# end.yr=n.years
+end.yr=n.years
 # 
 # # remove scientific numbers
 # options(scipen=999)
@@ -735,82 +736,82 @@ posteriors=jara.mod$BUGSoutput$sims.list
 
 
 
-# 
-# # get individual trends
-# fitted <- lower <- upper <- mat.or.vec(end.yr,(n.indices))
-# 
-# if(abundance=="census"){
-#   for(i in 1:n.indices){
-#     for (t in 1:end.yr){
-#       fitted[t,i] <- median(posteriors$N.est[,t,i])
-#       lower[t,i] <- quantile(posteriors$N.est[,t,i], 0.025)
-#       upper[t,i] <- quantile(posteriors$N.est[,t,i], 0.975)}}
-# } else {
-#   fitted <- lower <- upper <- as.null()
-#   for (t in 1:end.yr){
-#     fitted[t] <- median(posteriors$Y.est[,t])
-#     lower[t] <- quantile(posteriors$Y.est[,t], 0.025)
-#     upper[t] <- quantile(posteriors$Y.est[,t], 0.975)}
-# }
-# 
-# 
-# Nfit <- Nlow <- Nhigh <- as.numeric()
-# # get total pop size
-# for (t in 1:nT){
-#   Nfit[t] =  median(posteriors$Ntot[,t])
-#   Nlow[t] = quantile(posteriors$Ntot[,t],0.025)
-#   Nhigh[t] = quantile(posteriors$Ntot[,t],0.975)
-# }
-# 
-# #Abundance FITS
-# Par = list(mfrow=c(1,1),mar = c(4, 4, 1, 1), mgp =c(2.5,1,0),mai = c(0.6, 0.6, 0.1, 0.1),mex=0.8, tck = -0.02,cex=plot.cex)
-# png(file = paste0(output.dir,"/Fits_",assessment,".png"), width = plot.width, height = 4, 
-#     res = 200, units = "in")
-# par(Par)
-# 
-# 
-# m1 <- 0
-# m2 <- max(c(fitted, upper*1.1), na.rm = TRUE)
-# 
-# 
-# if(abundance=="census"){
-#   plot(0, 0, ylim = c(m1, m2), xlim = c(min(years-1),max(years+1)), ylab = "Population Numbers", xlab = "Year", col = "black", type = "n", lwd = 2, frame = FALSE,xaxs="i",yaxs="i",xaxt="n")
-#   cs = sample(seq(80,90,1))
-#   cols=paste0("gray",cs)
-#   col_line <- jabba.colors
-#   
-#   for(i in 1:n.indices) polygon(x = c(years,rev(years)), y = c(lower[,i],upper[end.yr:1,i]), col = gray(runif(1,0.5,0.9),0.5), border = "gray90")
-#   
-#   for(i in 1:n.indices)
-#   {
-#     lines(years,fitted[,i], type = "l",col=col_line[i], lwd=1)
-#     points(years,dat[,i+1], bg = col_line[i],pch=21) 
-#   }
-#   posl = c(max(fitted[1,]),max(fitted[length(years),]))
-# } else {  
-#   plot(0, 0, ylim = c(m1, m2), xlim =  c(min(years-1),max(years+1)), ylab = "Abundance Index", xlab = "Year", col = "black", type = "n", lwd = 2, frame = FALSE,xaxs="i",yaxs="i",xaxt="n")
-#   cs = sample(seq(80,90,1))
-#   cols=paste0("gray",cs)
-#   col_line <- jabba.colors
-#   q.adj = apply(posteriors$q,2,median)
-#   
-#   polygon(x = c(years,rev(years)), y = c(lower,upper[end.yr:1]), col = "gray", border = "gray90")
-#   
-#   
-#   for(i in 1:n.indices)
-#   {
-#     # points(year,I_y[,qs[i]]/q.adj[i], bg = col_line[qs[i]],col=col_line[qs[i]],pch=21,type="b")
-#     points(year,I_y[,qs[i]]/q.adj[i], bg = col_line[i],col=col_line[i],pch=21,type="b")
-#   }
-#   lines(years,fitted, type = "l",col=1, lwd=2)
-#   posl = c(max(fitted[1]),max(fitted[length(years)]))
-# }
-# 
-# legend(ifelse(posl[1]<posl[2],"topleft","topright"),paste(names(dat)[(qs[1:n.indices])+1]), lty = c(1, rep(n.indices)), lwd = c(rep(-1,n.indices)),pch=c(rep(21,n.indices)), pt.bg = c(jabba.colors[1:n.indices]), bty = "n", cex = 0.9,y.intersp = 0.8) ##NP change 1:nindices to qs[1:n.indices] in jabba.colors
-# # legend(ifelse(posl[1]<posl[2],"topleft","topright"),paste(names(dat)[2:(n.indices+1)]), lty = c(1, rep(n.indices)), lwd = c(rep(-1,n.indices)),pch=c(rep(21,n.indices)), pt.bg = c(jabba.colors[qs[1:n.indices]]), bty = "n", cex = 0.9,y.intersp = 0.8) ##NP change 1:nindices to qs[1:n.indices] in jabba.colors
-# # legend(ifelse(posl[1]<posl[2],"topleft","topright"),paste(names(dat)[2:(n.indices+1)]), lty = c(1, rep(n.indices)), lwd = c(rep(-1,n.indices)),pch=c(rep(21,n.indices)), pt.bg = c(jabba.colors[1:n.indices]), bty = "n", cex = 0.9,y.intersp = 0.8)
-# axis(1,at=seq(min(years)-1,max(years)+5,ceiling(n.years/8)),tick=seq(min(year),max(year),5),cex.axis=0.9)
-# dev.off()
+
+# get individual trends
+fitted <- lower <- upper <- mat.or.vec(end.yr,(n.indices))
+
+if(abundance=="census"){
+  for(i in 1:n.indices){
+    for (t in 1:end.yr){
+      fitted[t,i] <- median(posteriors$N.est[,t,i])
+      lower[t,i] <- quantile(posteriors$N.est[,t,i], 0.025)
+      upper[t,i] <- quantile(posteriors$N.est[,t,i], 0.975)}}
+} else {
+  fitted <- lower <- upper <- as.null()
+  for (t in 1:end.yr){
+    fitted[t] <- median(posteriors$Y.est[,t])
+    lower[t] <- quantile(posteriors$Y.est[,t], 0.025)
+    upper[t] <- quantile(posteriors$Y.est[,t], 0.975)}
+}
+
+
+Nfit <- Nlow <- Nhigh <- as.numeric()
+# get total pop size
+for (t in 1:nT){
+  Nfit[t] =  median(posteriors$Ntot[,t])
+  Nlow[t] = quantile(posteriors$Ntot[,t],0.025)
+  Nhigh[t] = quantile(posteriors$Ntot[,t],0.975)
+}
+
+#Abundance FITS
+Par = list(mfrow=c(1,1),mar = c(4, 4, 1, 1), mgp =c(2.5,1,0),mai = c(0.6, 0.6, 0.1, 0.2),mex=0.8, tck = -0.02,cex=plot.cex)
+png(file = paste0("./Outputs/", assessment, "/Fits_", assessment,".png"), width = plot.width, height = 4,
+    res = 200, units = "in")
+par(Par)
+
+
+m1 <- 0
+m2 <- max(c(unlist(dat[,-1]), upper)*1.1, na.rm = TRUE)
+
+
+if(abundance=="census"){
+  plot(0, 0, ylim = c(m1, m2), xlim = c(min(years-1),max(years+1)), ylab = "Population Numbers", xlab = "Year", col = "black", type = "n", lwd = 2, frame = FALSE,xaxs="i",yaxs="i",xaxt="n")
+  cs = sample(seq(80,90,1))
+  cols=paste0("gray",cs)
+  col_line <- jabba.colors
+
+  for(i in 1:n.indices) polygon(x = c(years,rev(years)), y = c(lower[,i],upper[end.yr:1,i]), col = gray(runif(1,0.5,0.9),0.5), border = "gray90")
+
+  for(i in 1:n.indices)
+  {
+    lines(years,fitted[,i], type = "l",col=col_line[i], lwd=1)
+    points(years,dat[,i+1], bg = col_line[i],pch=21)
+  }
+  posl = c(max(fitted[1,]),max(fitted[length(years),]))
+} else {
+  plot(0, 0, ylim = c(m1, m2), xlim =  c(min(years-1),max(years+1)), ylab = "Abundance Index", xlab = "Year", col = "black", type = "n", lwd = 2, frame = FALSE,xaxs="i",yaxs="i",xaxt="n")
+  cs = sample(seq(80,90,1))
+  cols=paste0("gray",cs)
+  col_line <- jabba.colors
+  q.adj = apply(posteriors$q,2,median)
+
+  polygon(x = c(years,rev(years)), y = c(lower,upper[end.yr:1]), col = "gray", border = "gray90")
+
+
+  for(i in 1:n.indices)
+  {
+    # points(year,I_y[,qs[i]]/q.adj[i], bg = col_line[qs[i]],col=col_line[qs[i]],pch=21,type="b")
+    points(year,I_y[,qs[i]]/q.adj[i], bg = col_line[i],col=col_line[i],pch=21,type="b")
+  }
+  lines(years,fitted, type = "l",col=1, lwd=2)
+  posl = c(max(fitted[1]),max(fitted[length(years)]))
+}
+
+legend(ifelse(posl[1]<posl[2],"topleft","topright"),paste(names(dat)[(qs[1:n.indices])+1]), lty = c(1, rep(n.indices)), lwd = c(rep(-1,n.indices)),pch=c(rep(21,n.indices)), pt.bg = c(jabba.colors[1:n.indices]), bty = "n", cex = 0.9,y.intersp = 0.8) ##NP change 1:nindices to qs[1:n.indices] in jabba.colors
+# legend(ifelse(posl[1]<posl[2],"topleft","topright"),paste(names(dat)[2:(n.indices+1)]), lty = c(1, rep(n.indices)), lwd = c(rep(-1,n.indices)),pch=c(rep(21,n.indices)), pt.bg = c(jabba.colors[qs[1:n.indices]]), bty = "n", cex = 0.9,y.intersp = 0.8) ##NP change 1:nindices to qs[1:n.indices] in jabba.colors
+# legend(ifelse(posl[1]<posl[2],"topleft","topright"),paste(names(dat)[2:(n.indices+1)]), lty = c(1, rep(n.indices)), lwd = c(rep(-1,n.indices)),pch=c(rep(21,n.indices)), pt.bg = c(jabba.colors[1:n.indices]), bty = "n", cex = 0.9,y.intersp = 0.8)
+axis(1,at=seq(min(years)-1,max(years)+5,ceiling(n.years/8)),tick=seq(min(year),max(year),5),cex.axis=0.9)
+dev.off()
 # 
 # #------------------------------------------------------------------
 # # Goodness of fit Statistics
