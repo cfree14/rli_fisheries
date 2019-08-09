@@ -652,7 +652,7 @@ if(any(na.omit(Rhat>1.1))) {
     } else{break}
   }
 }
-write.table(Rhat,file=paste0("./Outputs/Rhat/", file_list[i],"_Rhat.txt"))
+write.table(Rhat,file=paste0("./Outputs/Rhat/", species_name,"_Rhat.txt"))
 ##NP
 
 
