@@ -20,7 +20,7 @@ GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generat
 
 
 file_list <- sort(unique(stocks$genus_species)) # add column fish
-# i <- 1
+i <- 61
 
 # see which fish we don't have the GL
 # GL_df_noNA <- GL_df[!is.na(GL_df$g_yr), ]
@@ -29,8 +29,9 @@ file_list <- sort(unique(stocks$genus_species)) # add column fish
 
 
 # for(i in 1:length(file_list)){
-for(i in 1:10){
-  cat(yellow(paste0('\nSpecies : ', file_list[i])))
+for(i in 62:100){
+  species_name = file_list[i]
+  cat(cyan(paste0('\nSpecies : ', species_name)))
   
   # Set Working directory file, where assessments are stored 
   File = paste0("./Outputs/", file_list[i])
@@ -65,7 +66,7 @@ for(i in 1:10){
   # for(sp in 1:dim(sp.assess)[1]){
   # for(sp in c(5:6)){
     spsel <- sp.assess[1,]
-    cat(cyan(paste0('\nTime-series : ', spsel[[1]]))) ##NP
+    # cat(cyan(paste0('\nTime-series : ', spsel[[1]]))) ##NP
     
     #-----------------------------------------------------------------
     # Set up JARA based on csv input file 
@@ -88,7 +89,7 @@ for(i in 1:10){
     plot.width <- 5 # default is 5 inches
     
     # create dataset for all time-series for one species
-    year_dat <- sort(unique(data$year[which(data$stockid %in% stocks$stockid[stocks$genus_species == file_list[i]])]))
+    year_dat <- min(data$year[which(data$stockid %in% stocks$stockid[stocks$genus_species == file_list[i]])]):max(data$year[which(data$stockid %in% stocks$stockid[stocks$genus_species == file_list[i]])])
     dat <- data.frame(matrix(c(year_dat
                                , rep(NA,length(year_dat)*length(stocks$stockid[stocks$genus_species == file_list[i]])))
                                , ncol = (length(stocks$stockid[stocks$genus_species == file_list[i]])+1), byrow = FALSE))
