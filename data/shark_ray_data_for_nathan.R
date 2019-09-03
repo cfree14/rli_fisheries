@@ -79,19 +79,27 @@ stock_key[stock_key$species=="Lepidorhombus spp", c("phylum", "class", "order", 
 ################################################################################
 
 # Shark/ray key
-elasmo_stocks <- stock_key %>% 
+stocks <- stock_key %>% 
   filter(order %in% c("Squaliformes", "Lamniformes", "Carcharhiniformes"))
 
-
 # Time series data
-ts_data <- timeseries_values_views %>% 
-  filter(stockid %in% elasmo_stocks$stockid) %>% 
-  select(stockid, year, TB, SSB, TN, R, TC, TL, F, ER) %>% 
+data <- timeseries_values_views %>% 
+  # Filter to sharks
+  filter(stockid %in% stocks$stockid) %>% 
+  # Select and rename columns
+  select(stockid, year, TB, SSB, TN, R, TC, TL, F, ER,
+         TBdivTBmsy, SSBdivSSBmsy, FdivFmsy, ERdivERmsy) %>% 
   setNames(tolower(colnames(.))) %>% 
-  rename(fmort=f)
-
-
-#
-freeR::complete(ts_data)
+  rename(fmort=f, bbmsy_tb=tbdivtbmsy, bbmsy_ssb=ssbdivssbmsy, ffmsy=fdivfmsy, uumsy=erdivermsy) %>% 
+  # Add units
+  left_join(timeseries_units_views %>% 
+              select(stockid, TB, SSB, TN, R, TC, TL) %>% 
+              rename(tb_units=TB, ssb_units=SSB, tn_units=TN, r_units=R, tc_units=TC, tl_units=TL), by="stockid") %>% 
+  # Rearrange columns
+  select(stockid, year, tb, tb_units, ssb, ssb_units, tn, tn_units, r, r_units,
+         tc, tc_units, tl, tl_units, fmort, er, everything())
+  
+# Export data
+save(stocks, data, file=file.path(datadir, "ram_shark_data.Rdata"))
 
 
