@@ -44,6 +44,11 @@ stock_key <- stock %>%
   left_join(select(assess_info, stockid, assessid, assessmethod), by="stockid") %>% 
   # Rename columns
   rename(species=scientificname, comm_name=commonname, area=areaname, method=assessmethod) %>% 
+  # Add taxonomy
+  left_join(select(taxonomy, phylum, classname, ordername, family, scientificname), by=c("species"="scientificname")) %>% 
+  rename(class=classname, order=ordername) %>% 
+  
+  
   # Format columns
   mutate(comm_name=freeR::sentcase(comm_name),
          species=gsub("spp.", "spp", species),
@@ -63,7 +68,10 @@ stock_key <- stock %>%
                                     "Tetrapturus albidus"="Kajikia albida",
                                     "Sardinops melanostictus"="Sardinops sagax"))) %>% 
   # Rearrange columns
-  select(stockid, stocklong, assessid, method, country, region, area, species, comm_name) 
+  select(stockid, stocklong, assessid, method, country, region, area, 
+         species, comm_name, phylum, class, order, family) 
+  # Fill missing taxonomic info
+  stock_key[stock_key$species=="Lepidorhombus spp", c("phylum", "class", "order", "family")] <- c("Chordata",	"Actinopterygii",	"Pleuronectiformes", "Scophthalmidae")
 
 # Check names
 # freeR::check_names(stock_key$species)
@@ -134,33 +142,64 @@ ts_stats <- ts_data %>%
 
 # Data selection process:
 # 1. No salmon
-# 1. SSB > TB > TN (but TB used if it offers 5% more data)
-# 2. F/FMSY > U/UMSY (because F/FMSY always from assessment)
+# 2. No invertebrates
+# 3. SSB > TB > TN (but TB used if it offers 5% more data)
+    ##NP Only SSB > TB > TN
+# 4. F/FMSY > U/UMSY (because F/FMSY always from assessment)
 
-g <- ggplot(ts_stats, aes(x=uumsy_nyr, y=ffmsy_nyr, color=uumsy_source)) +
-  geom_point() + 
-  geom_abline(slope=0.95, intercept=0) +
-  labs(x="Number of years with U/UMSY", y="Number of years with F/FMSY") + theme_bw()
-g
+# g <- ggplot(ts_stats, aes(x=uumsy_nyr, y=ffmsy_nyr, color=uumsy_source)) +
+#   geom_point() +
+#   geom_abline(slope=0.95, intercept=0) +
+#   labs(x="Number of years with U/UMSY", y="Number of years with F/FMSY") + theme_bw()
+# g
 
+
+#Add species and common name ##NP
+ts_stats$genus_species <- stock_key[match(ts_stats$stockid, stock_key$stockid),'species'] ##NP
+ts_stats$genus <- sub('\\s.*','',stock_key[match(ts_stats$stockid, stock_key$stockid),'species']) ##NP
+ts_stats$species <- sub('.*\\s','',stock_key[match(ts_stats$stockid, stock_key$stockid),'species']) ##NP
+ts_stats$comm_name <- stock_key[match(ts_stats$stockid, stock_key$stockid),'comm_name'] ##NP
+
+# xxx <- ts_stats[ts_stats$ssb_nyr < ts_stats$tb_nyr | ts_stats$ssb_nyr < ts_stats$tn_nyr,]
+# xxx <- xxx[xxx$ssb_nyr != 0,]
+# xxx$maxy <- ifelse((xxx$tb_nyr>xxx$tn_nyr),xxx$tb_nyr,xxx$tn_nyr)
+# plot(xxx$ssb_nyr,col='red',pch=19, ylim=c(0,max(c(xxx$ssb_nyr,xxx$tb_nyr , xxx$tn_nyr))))
+# points(xxx$tb_nyr,col='green')
+# points(xxx$tn_nyr,col='blue')
+# plot(sort(xxx$maxy-xxx$ssb_nyr),col='red',pch=19)
+
+# see which fish we don't have the GL : ALL finfish have GL!
+# ts_stats$phylum <- sub('\\s.*','',stock_key[match(ts_stats$stockid, stock_key$stockid),'phylum']) ##NP # select only chordata
+# GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generation_times_finfish_only.csv")
+# GL_df <- GL_df %>%
+#   filter(phylum=="Chordata") %>%
+#   select(-phylum)
+# GL_df_noNA <- GL_df[!is.na(GL_df$g_yr), ]
+# file_list <- unique(ts_stats$genus_species[ts_stats$phylum=='Chordata'])
+# file_list[!(file_list %in% GL_df_noNA$species)]
 
 # Data requirements
-nyr_b_req <- 25
+nyr_b_req <- 10
 
 # Build use key
 ts_use <- ts_stats %>% 
   # 1. Remove salmon stocks
-  left_join(select(stock_key, stockid, region), by="stockid") %>% 
+  left_join(select(stock_key, stockid, region, phylum), by="stockid") %>% 
   filter(!grepl("Salmon", region)) %>% 
   select(-region) %>% 
-  # 2. Remove stocks with insufficient biomass info
+  # 2. Remove invertebrate stocks
+  filter(phylum=="Chordata") %>% 
+  select(-phylum) %>% 
+  # 3. Remove stocks with insufficient biomass info
   filter(ssb_nyr >= nyr_b_req | tb_nyr >= nyr_b_req | tn_nyr >= nyr_b_req) %>% 
-  # 3. Identify which biomass time series to use
-  mutate(b_use=ifelse(ssb_nyr>=0.95*tb_nyr & ssb_nyr>=0.95*tn_nyr, "SSB", 
-                      ifelse(tb_nyr>=0.95*tn_nyr, "TB", "TN")),
+  # 4. Identify which biomass time series to use
+  # mutate(b_use=ifelse(ssb_nyr>=0.95*tb_nyr & ssb_nyr>=0.95*tn_nyr, "SSB", 
+  #                     ifelse(tb_nyr>=0.95*tn_nyr, "TB", "TN")),
+  mutate(b_use=ifelse(ssb_nyr != 0, "SSB", ##NP
+                      ifelse(tb_nyr>=tn_nyr, "TB", "TN")), ##NP
          b_units=ifelse(b_use=="SSB", ssb_units,
                         ifelse(b_use=="TB", tb_units, tn_units))) %>% 
-  # 4. Identify which F/FMSY time series to use
+  # 5. Identify which F/FMSY time series to use
   mutate(ffmsy_use=ifelse(ffmsy_nyr==0 & uumsy_nyr==0, "none",
                           ifelse(ffmsy_nyr>=0.95*uumsy_nyr, "F/FMSY", "U/UMSY")))
 
@@ -202,18 +241,35 @@ stocks <- stock_key %>%
   filter(stockid %in% ts_use$stockid) %>% 
   left_join(stats, by="stockid")
 
-#Add species and common name
-stocks$genus <- sub('\\s.*','',stocks[match(data$stockid, stocks$stockid),'species']) ##NP
-stocks$species <- sub('.*\\s','',stocks[match(data$stockid, stocks$stockid),'species']) ##NP
-stocks$genus_species <- stocks[match(data$stockid, stocks$stockid),'species'] ##NP
-stocks$comm_name <- stocks[match(data$stockid, stocks$stockid),'comm_name'] ##NP
+# Add species and common name + GL ##NP
+stocks$genus_species <- stock_key[match(stocks$stockid, stock_key$stockid),'species'] ##NP
+stocks$species <- NULL
+stocks$genus <- sub('\\s.*','',stock_key[match(stocks$stockid, stock_key$stockid),'species']) ##NP
+stocks$species <- sub('.*\\s','',stock_key[match(stocks$stockid, stock_key$stockid),'species']) ##NP
+stocks$comm_name <- stock_key[match(stocks$stockid, stock_key$stockid),'comm_name'] ##NP
+GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generation_times_finfish_only.csv")
+stocks$GL <- GL_df[match(stocks$genus_species, GL_df$species),'g_yr'] ##NP
+stocks$GL3 <- round(3*stocks$GL,0)
 
+# Create list of stocks by species ##NP
+temp_stocks <- stocks
+temp_stocks$start_y <- apply(temp_stocks,1,function(x) min(data$year[data$stockid == x[1]])) # x[1] = temp_stocks$stockid
+temp_stocks$end_y <- apply(temp_stocks,1,function(x) max(data$year[data$stockid == x[1]])) # x[1] = temp_stocks$stockid
+sp_stock <- split(temp_stocks, temp_stocks$genus_species)
+sp_stock <- lapply(sp_stock,as.list)
 
+GL3_sp_stock <- unlist(lapply(sp_stock,function(x) (max(x$end_y)-min(x$start_y)+1-unique(x$GL3)>0)))
+sp_stock <- sp_stock[GL3_sp_stock]
+##NP
 
-# Export data
+# Export data 
 # save(stocks, data, file=file.path(datadir, "ram4.41_for_analysis.Rdata"))
-save(stocks, data, file=file.path("ram4.41_for_analysis.Rdata"))
-
+    # + select only species with span of aggregated time-series > GL3
+    stocks <- stocks[stocks$genus_species %in% names(sp_stock),]
+    data <- data[data$stockid %in% stocks$stockid,]
+    # + select only species with span of aggregated time-series > GL3
+save(stocks, data, sp_stock, file=file.path("ram4.41_for_analysis_NP.Rdata"))
+sum(stocks$ffmsy_source!="none")
 table(stocks$ffmsy_source)
 table(stocks$biomass_units)
 
