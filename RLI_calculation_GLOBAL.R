@@ -61,11 +61,12 @@ rescale_RLI <- function(value=value, A1=A1, weighted = weighted){
 load("ram4.41_for_analysis_NP.Rdata")
 GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generation_times_finfish_only.csv")
 
-
+start_RLI <- 1970
+end_RLI <- 2012 # 2012 cut year?
 file_list <- sort(unique(stocks$genus_species)) # add column fish
 # i<- 20
 
-Launch_RLI <- function(sp_start_i=sp_start_i, sp_end_i=sp_end_i, RLI_backforecast=RLI_backforecast, ploting=ploting, weighted=weighted, A1=A1){
+Launch_RLI <- function(sp_start_i=sp_start_i, sp_end_i=sp_end_i, year_start=year_start, year_end=year_end, RLI_forecast=RLI_forecast, RLI_backcast=RLI_backcast, plotting=plotting, weighted=weighted, A1=A1){
   RL_status <- NULL
   # for(i in 1:length(file_list)){
   for(i in sp_start_i:sp_end_i){
@@ -74,23 +75,23 @@ Launch_RLI <- function(sp_start_i=sp_start_i, sp_end_i=sp_end_i, RLI_backforecas
     RL_status_tmp <- NULL
     RLI_df <- NULL
     
-    load(paste0("./Outputs/",file_list[i],"/df_change_",file_list[i], ".RData"))
+    load(paste0("./Outputs/",file_list[i],"/",file_list[i], "_df_change.RData"))
     year_dat <- sort(unique(data$year[which(data$stockid %in% stocks$stockid[stocks$genus_species == file_list[i]])]))
     year_RLA <- as.numeric(row.names(df_change))
-    year_RLA <- year_RLA[year_RLA>=1950]
+    if(any((year_RLA[1]>year_end | tail(year_RLA,1) < year_start))){next}
+      else{year_RLA <- year_RLA[year_RLA>=year_start & year_RLA<=year_end]}
     
     ### calculate RLI ###
-    RL_status_tmp <- array(as.numeric(rep(NA,length(1950:2020)*30000)), dim= c(length(1950:2020),30000))
-    rownames(RL_status_tmp) <- 1950:2020
+    RL_status_tmp <- array(as.numeric(rep(NA,length(year_start:year_end)*30000)), dim= c(length(year_start:year_end),30000))
+    rownames(RL_status_tmp) <- year_start:year_end
     RL_status_tmp[as.character(year_RLA),] <- t(apply(df_change[as.character(year_RLA),,drop=F],1, function(x) 1-(rescale_RLI(value=x, weighted = weighted, A1=A1)/5))) # weighted = T --> weight of categories following Butchart et al. 2004       
-    # if(year_RLA[1]>1950){RL_status_tmp[as.character(1950:(year_RLA[1]-1)),] <- matrix(rep(RL_status_tmp[as.character(year_RLA[1]),],length(1950:(year_RLA[1]-1))),nrow=length(1950:(year_RLA[1]-1)),byrow=T)}
-    if(RLI_backforecast == 'OK'){if(year_RLA[1]>1950){RL_status_tmp[as.character(1950:(year_RLA[1]-1)),] <- matrix(rep(RL_status_tmp[as.character(year_RLA[1]),],length(1950:(year_RLA[1]-1))),nrow=length(1950:(year_RLA[1]-1)),byrow=T)}
-      RL_status_tmp[as.character((tail(year_RLA,1)+1):2020),] <- RL_status_tmp[as.character(tail(year_RLA,1)),]
-    }
+    # if(year_RLA[1]>year_start){RL_status_tmp[as.character(year_start:(year_RLA[1]-1)),] <- matrix(rep(RL_status_tmp[as.character(year_RLA[1]),],length(year_start:(year_RLA[1]-1))),nrow=length(year_start:(year_RLA[1]-1)),byrow=T)}
+    if(RLI_forecast == 'OK' & tail(year_RLA,1)<year_end){RL_status_tmp[as.character((tail(year_RLA,1)+1):year_end),] <- RL_status_tmp[as.character(tail(year_RLA,1)),]}
+    if(RLI_backcast == 'OK' & year_RLA[1]>year_start){RL_status_tmp[as.character(year_start:(year_RLA[1]-1)),] <- matrix(rep(RL_status_tmp[as.character(year_RLA[1]),],length(year_start:(year_RLA[1]-1))),nrow=length(year_start:(year_RLA[1]-1)),byrow=T)}
     
-    if(ploting == 'OK'){
-      RLI_df_tmp <- data.frame('year' = 1950:2020
-                               # , 'colors' = c(rep('black',year_RLA[1]-1950),rep('red',length(year_RLA)),rep('black',2020-tail(year_RLA,1)))
+    if(plotting == 'OK'){
+      RLI_df_tmp <- data.frame('year' = year_start:year_end
+                               # , 'colors' = c(rep('black',year_RLA[1]-year_start),rep('red',length(year_RLA)),rep('black',year_end-tail(year_RLA,1)))
                                , 'RLI_mean' = apply(RL_status_tmp,1,mean,na.rm=TRUE)
                                , 'RLI_HPDlow' = apply(RL_status_tmp,1,function(x) if(!is.na(x[1])){HPDinterval(as.mcmc(x), prob = 0.95)[1]}else{NA})
                                , 'RLI_HPDhigh' = apply(RL_status_tmp,1,function(x) if(!is.na(x[1])){HPDinterval(as.mcmc(x), prob = 0.95)[2]}else{NA})
@@ -98,7 +99,7 @@ Launch_RLI <- function(sp_start_i=sp_start_i, sp_end_i=sp_end_i, RLI_backforecas
       
       png(file = paste0("./Outputs/",file_list[i],"/RLI_", file_list[i], ".png"), width = 5, height = 4,
           res = 200, units = "in")
-      plot(NULL, las=1, type = 'l', lty = 'dashed', ylim = c(0,1.1), cex.axis = 1.2, cex.lab = 1.5, xlim = c(1950,2020), ylab = 'Red List Index', xlab = 'Year', yaxs="i", xaxs="i", bty="n")
+      plot(NULL, las=1, type = 'l', lty = 'dashed', ylim = c(0,1.1), cex.axis = 1.2, cex.lab = 1.5, xlim = c(year_start,year_end), ylab = 'Red List Index', xlab = 'Year', yaxs="i", xaxs="i", bty="n")
       polygon(c(rev(RLI_df_tmp$year[!is.na(RLI_df_tmp$RLI_HPDlow)]), RLI_df_tmp$year[!is.na(RLI_df_tmp$RLI_HPDlow)]), c(rev(RLI_df_tmp$RLI_HPDlow[!is.na(RLI_df_tmp$RLI_HPDlow)]), RLI_df_tmp$RLI_HPDhigh[!is.na(RLI_df_tmp$RLI_HPDlow)])
               , col = 'grey', border = NA)
       lines(RLI_mean~year,data=RLI_df_tmp, type = 'l', lwd=1.2)
@@ -110,32 +111,35 @@ Launch_RLI <- function(sp_start_i=sp_start_i, sp_end_i=sp_end_i, RLI_backforecas
   assign("RL_status", RL_status, envir = .GlobalEnv)
 }
 
-
-
-
 Launch_RLI(sp_start_i=1,
-           sp_end_i=50,
-           RLI_backforecast='no', #Ok or something else
-           ploting='no', #Ok or something else
+           sp_end_i=30,
+           year_start=start_RLI,
+           year_end=end_RLI,
+           RLI_forecast='OK', #OK or something else
+           RLI_backcast='OK', #OK or something else
+           plotting='no', #OK or something else
            weighted=F,
            A1=T)
  
   
   
-   
-##### SEE WITH MEDIAN OR MEAN
-RLI_df <- data.frame('year' = 1950:2020
+
+##### GLOBAL RED LIST INDEX
+# See with mean or median
+RLI_df <- data.frame('year' = start_RLI:end_RLI
                      # , 'colors' = c(rep('black',year_RLA[1]-1950),rep('red',length(year_RLA)),rep('black',2020-tail(year_RLA,1)))
                      , 'RLI_mean' = apply(RL_status,1,mean, na.rm=T)
+                     , 'RLI_median' = apply(RL_status,1,median, na.rm=T)
                      , 'RLI_HPDlow' = apply(RL_status,1,function(x) if(!all(is.na(x))){HPDinterval(as.mcmc(na.omit(x)), prob = 0.95)[1]}else{NA})
                      , 'RLI_HPDhigh' = apply(RL_status,1,function(x) if(!all(is.na(x))){HPDinterval(as.mcmc(na.omit(x)), prob = 0.95)[2]}else{NA})
 )
 row.names(RLI_df)<-NULL
 
-png(file = paste0("./RLI_",50, "species_"
-                  , "backforecast"
+png(file = paste0("./RLI_",162, "species_"
+                  , start_RLI, "_", end_RLI
+                  # , "_backforecast"
                   , ".png"), width = 5, height = 4, res = 200, units = "in")
-plot(NULL, las=1, type = 'l', lty = 'dashed', ylim = c(0,1.1), cex.axis = 1.2, cex.lab = 1.5, xlim = c(1950,2020), ylab = 'Red List Index', xlab = 'Year', yaxs="i", xaxs="i", bty="n")
+plot(NULL, las=1, type = 'l', lty = 'dashed', ylim = c(0,1.1), cex.axis = 1.2, cex.lab = 1.5, xlim = c(start_RLI,end_RLI), ylab = 'Red List Index', xlab = 'Year', yaxs="i", xaxs="i", bty="n")
 polygon(c(rev(RLI_df$year), RLI_df$year), c(rev(RLI_df$RLI_HPDlow), RLI_df$RLI_HPDhigh)
         , col = 'grey', border = NA)
 lines(RLI_mean~year,data=RLI_df, type = 'l', lwd=1.2)
@@ -143,16 +147,29 @@ lines(RLI_mean~year,data=RLI_df, type = 'l', lwd=1.2)
 dev.off()
 
 
+##### Disaggregated RED LIST INDEX
+# See with mean or median
+RLI_FAO <- data.frame('year' = start_RLI:end_RLI
+                     # , 'colors' = c(rep('black',year_RLA[1]-1950),rep('red',length(year_RLA)),rep('black',2020-tail(year_RLA,1)))
+                     , 'RLI_mean' = apply(RL_status,1,mean, na.rm=T)
+                     , 'RLI_median' = apply(RL_status,1,median, na.rm=T)
+                     , 'RLI_HPDlow' = apply(RL_status,1,function(x) if(!all(is.na(x))){HPDinterval(as.mcmc(na.omit(x)), prob = 0.95)[1]}else{NA})
+                     , 'RLI_HPDhigh' = apply(RL_status,1,function(x) if(!all(is.na(x))){HPDinterval(as.mcmc(na.omit(x)), prob = 0.95)[2]}else{NA})
+)
+row.names(RLI_df)<-NULL
 
-library("png")
+png(file = paste0("./RLI_",162, "species_"
+                  , start_RLI, "_", end_RLI
+                  # , "_backforecast"
+                  , ".png"), width = 5, height = 4, res = 200, units = "in")
+plot(NULL, las=1, type = 'l', lty = 'dashed', ylim = c(0,1.1), cex.axis = 1.2, cex.lab = 1.5, xlim = c(start_RLI,end_RLI), ylab = 'Red List Index', xlab = 'Year', yaxs="i", xaxs="i", bty="n")
+polygon(c(rev(RLI_df$year), RLI_df$year), c(rev(RLI_df$RLI_HPDlow), RLI_df$RLI_HPDhigh)
+        , col = 'grey', border = NA)
+lines(RLI_mean~year,data=RLI_df, type = 'l', lwd=1.2)
+# lines(RLI_mean~year,data=RLI_df[RLI_df$year %in% year_RLA, ], type = 'l', col='red', lwd=1.2)
+dev.off()
 
-#copy/paste plot
-for(i in 1:50){
-  rawPath <- paste0("./Outputs/",file_list[i])
-  dataPath <- paste0("./IUCNplots")
-  dataFiles <- dir(rawPath, paste0(file_list[i], "_RLA_plot.png"), ignore.case = TRUE, all.files = TRUE)
-  file.copy(file.path(rawPath, dataFiles), dataPath, overwrite = TRUE)
-}
+
 
 
 
