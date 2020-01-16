@@ -8,6 +8,7 @@ rm(list = ls())
 # Packages
 library(tidyverse)
 library(freeR)
+library(readxl)
 
 # Directories
 # datadir <- "data/ramldb"
@@ -264,6 +265,25 @@ GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generat
 stocks$GL <- GL_df[match(stocks$genus_species, GL_df$species),'g_yr'] ##NP
 stocks$GL3 <- round(3*stocks$GL,0)
 
+
+
+# Add FAO areas + Marine Ecoregions to stocks and sp_stocks ## NP
+ID_areas <- read_excel("data/ramldb_v3.8_stock_boundary_centroids_areas_fixed.xlsx")
+old_ID_areas <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb_v3.8_spsst_pella_cobe_lme_LINKolddatabaseAssessidToStockid.csv")
+
+# add stockid to ID_areas from the two source
+ID_areas$stockid <- NA
+ID_areas$stockid <- stocks$stockid[match(ID_areas$assessid, stocks$assessid)]
+ID_areas$stockid <- old_ID_areas$stockid[match(ID_areas$assessid, old_ID_areas$assessid)]
+
+# link fao areas
+stocks <- bind_cols(stocks,ID_areas[match(stocks$assessid, ID_areas$assessid),'fao_area'])
+stocks$fao_area[which(is.na(stocks$fao_area))] <- pull(ID_areas[match(stocks$stockid, ID_areas$stockid),'fao_area'])[which(is.na(stocks$fao_area))]
+# link LME
+stocks <- bind_cols(stocks,ID_areas[match(stocks$assessid, ID_areas$assessid),'lme_name'])
+stocks$lme_name[which(is.na(stocks$lme_name))] <- pull(ID_areas[match(stocks$stockid, ID_areas$stockid),'lme_name'])[which(is.na(stocks$lme_name))]
+## NP
+
 # Create list of stocks by species ##NP
 temp_stocks <- stocks
 temp_stocks$start_y <- apply(temp_stocks,1,function(x) min(data$year[data$stockid == x[1]])) # x[1] = temp_stocks$stockid
@@ -274,6 +294,32 @@ sp_stock <- lapply(sp_stock,as.list)
 GL3_sp_stock <- unlist(lapply(sp_stock,function(x) (max(x$end_y)-min(x$start_y)+1-unique(x$GL3)>0)))
 sp_stock <- sp_stock[GL3_sp_stock]
 ##NP
+
+
+
+###############################
+###############################
+###############################
+
+# Add ISSCAAP code (functional group) to stocks and sp_stocks ## NP
+ISSCAAP_code <- read_excel("ASFIS_sp_2019_NP.xlsx")
+# sp without code
+sort(unique(stocks$genus_species[is.na(match(stocks$genus_species, ISSCAAP_code$Scientific_name))]))
+
+# stocks$ISSCAAP_code <- ISSCAAP_code[match(stocks$genus_species, ISSCAAP_code$Scientific_name),'ISSCAAP'] ##NP
+
+
+
+
+## NP
+
+###############################
+###############################
+###############################
+
+
+
+
 
 # Export data 
 # save(stocks, data, file=file.path(datadir, "ram4.41_for_analysis.Rdata"))
