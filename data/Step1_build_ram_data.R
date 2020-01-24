@@ -261,28 +261,30 @@ stocks$species <- NULL
 stocks$genus <- sub('\\s.*','',stock_key[match(stocks$stockid, stock_key$stockid),'species']) ##NP
 stocks$species <- sub('.*\\s','',stock_key[match(stocks$stockid, stock_key$stockid),'species']) ##NP
 stocks$comm_name <- stock_key[match(stocks$stockid, stock_key$stockid),'comm_name'] ##NP
-GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generation_times_finfish_only.csv")
-stocks$GL <- GL_df[match(stocks$genus_species, GL_df$species),'g_yr'] ##NP
-stocks$GL3 <- round(3*stocks$GL,0)
+GL_df <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb/ram4.41_generation_times_finfish_only.csv") ## NP
+stocks$GL <- GL_df[match(stocks$genus_species, GL_df$species),'g_yr'] ## NP
+stocks$GL3 <- round(3*stocks$GL,0) ## NP
 
 
 
 # Add FAO areas + Marine Ecoregions to stocks and sp_stocks ## NP
-ID_areas <- read_excel("data/ramldb_v3.8_stock_boundary_centroids_areas_fixed.xlsx")
-old_ID_areas <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb_v3.8_spsst_pella_cobe_lme_LINKolddatabaseAssessidToStockid.csv")
+ID_areas <- read_excel("data/ramldb_v3.8_stock_boundary_centroids_areas_fixed.xlsx") ## NP
+unmatchID_areas <- as_tibble(read.csv("C:/Postdoc_analyses/rli_fisheries/data/fao_areas_for_unmatched_assessids.csv")) ## NP
+old_ID_areas <- read.csv("C:/Postdoc_analyses/rli_fisheries/data/ramldb_v3.8_spsst_pella_cobe_lme_LINKolddatabaseAssessidToStockid.csv") ## NP
 
-# add stockid to ID_areas from the two source
-ID_areas$stockid <- NA
-ID_areas$stockid <- stocks$stockid[match(ID_areas$assessid, stocks$assessid)]
-ID_areas$stockid <- old_ID_areas$stockid[match(ID_areas$assessid, old_ID_areas$assessid)]
+# add stockid to ID_areas from the two source ## NP
+ID_areas$stockid <- NA ## NP
+ID_areas$stockid <- stocks$stockid[match(ID_areas$assessid, stocks$assessid)] ## NP
+ID_areas$stockid <- old_ID_areas$stockid[match(ID_areas$assessid, old_ID_areas$assessid)] ## NP
 
-# link fao areas
-stocks <- bind_cols(stocks,ID_areas[match(stocks$assessid, ID_areas$assessid),'fao_area'])
-stocks$fao_area[which(is.na(stocks$fao_area))] <- pull(ID_areas[match(stocks$stockid, ID_areas$stockid),'fao_area'])[which(is.na(stocks$fao_area))]
-# link LME
-stocks <- bind_cols(stocks,ID_areas[match(stocks$assessid, ID_areas$assessid),'lme_name'])
-stocks$lme_name[which(is.na(stocks$lme_name))] <- pull(ID_areas[match(stocks$stockid, ID_areas$stockid),'lme_name'])[which(is.na(stocks$lme_name))]
-## NP
+# link fao areas ## NP
+stocks <- bind_cols(stocks,ID_areas[match(stocks$assessid, ID_areas$assessid),'fao_area']) ## NP
+stocks$fao_area[which(is.na(stocks$fao_area))] <- pull(ID_areas[match(stocks$stockid, ID_areas$stockid),'fao_area'])[which(is.na(stocks$fao_area))] ## NP
+stocks$fao_area[which(is.na(stocks$fao_area))] <- pull(unmatchID_areas[match(stocks$assessid, unmatchID_areas$assessid),'fao_area'])[which(is.na(stocks$fao_area))] ## NP
+# link LME ## NP
+stocks <- bind_cols(stocks,ID_areas[match(stocks$assessid, ID_areas$assessid),'lme_name']) ## NP
+stocks$lme_name[which(is.na(stocks$lme_name))] <- pull(ID_areas[match(stocks$stockid, ID_areas$stockid),'lme_name'])[which(is.na(stocks$lme_name))] ## NP
+
 
 # Create list of stocks by species ##NP
 temp_stocks <- stocks
@@ -303,6 +305,11 @@ sp_stock <- sp_stock[GL3_sp_stock]
 
 # Add ISSCAAP code (functional group) to stocks and sp_stocks ## NP
 ISSCAAP_code <- read_excel("ASFIS_sp_2019_NP.xlsx")
+
+
+stocks$genus_species[which(!(stocks$genus_species %in% ISSCAAP_code$Scientific_name))]
+
+
 # sp without code
 sort(unique(stocks$genus_species[is.na(match(stocks$genus_species, ISSCAAP_code$Scientific_name))]))
 
