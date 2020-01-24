@@ -298,31 +298,10 @@ sp_stock <- sp_stock[GL3_sp_stock]
 ##NP
 
 
-
-###############################
-###############################
-###############################
-
 # Add ISSCAAP code (functional group) to stocks and sp_stocks ## NP
-ISSCAAP_code <- read_excel("ASFIS_sp_2019_NP.xlsx")
+ISSCAAP_code <- as.data.frame(read_excel("ASFIS_sp_2019_NP.xlsx")) ## NP
+stocks$ISSCAAP_code <- as.numeric(ISSCAAP_code[match(stocks$genus_species, ISSCAAP_code$Scientific_name),'ISSCAAP']) ##NP
 
-
-stocks$genus_species[which(!(stocks$genus_species %in% ISSCAAP_code$Scientific_name))]
-
-
-# sp without code
-sort(unique(stocks$genus_species[is.na(match(stocks$genus_species, ISSCAAP_code$Scientific_name))]))
-
-# stocks$ISSCAAP_code <- ISSCAAP_code[match(stocks$genus_species, ISSCAAP_code$Scientific_name),'ISSCAAP'] ##NP
-
-
-
-
-## NP
-
-###############################
-###############################
-###############################
 
 
 
