@@ -287,23 +287,18 @@ stocks$lme_name[which(is.na(stocks$lme_name))] <- pull(ID_areas[match(stocks$sto
 
 
 # Create list of stocks by species ##NP
-temp_stocks <- stocks
-temp_stocks$start_y <- apply(temp_stocks,1,function(x) min(data$year[data$stockid == x[1]])) # x[1] = temp_stocks$stockid
-temp_stocks$end_y <- apply(temp_stocks,1,function(x) max(data$year[data$stockid == x[1]])) # x[1] = temp_stocks$stockid
-sp_stock <- split(temp_stocks, temp_stocks$genus_species)
-sp_stock <- lapply(sp_stock,as.list)
+stocks$start_y <- apply(stocks,1,function(x) min(data$year[data$stockid == x[1]])) # x[1] = stocks$stockid
+stocks$end_y <- apply(stocks,1,function(x) max(data$year[data$stockid == x[1]])) # x[1] = stocks$stockid
+stocks<-stocks[((stocks$end_y-stocks$start_y)+1-stocks$GL3)>=0,]
 
-GL3_sp_stock <- unlist(lapply(sp_stock,function(x) (max(x$end_y)-min(x$start_y)+1-unique(x$GL3)>0)))
-sp_stock <- sp_stock[GL3_sp_stock]
+sp_stock <- split(stocks, stocks$genus_species)
+sp_stock <- lapply(sp_stock,as.list)
 ##NP
 
 
 # Add ISSCAAP code (functional group) to stocks and sp_stocks ## NP
 ISSCAAP_code <- as.data.frame(read_excel("ASFIS_sp_2019_NP.xlsx")) ## NP
 stocks$ISSCAAP_code <- as.numeric(ISSCAAP_code[match(stocks$genus_species, ISSCAAP_code$Scientific_name),'ISSCAAP']) ##NP
-
-
-
 
 
 
